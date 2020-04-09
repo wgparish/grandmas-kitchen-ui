@@ -54,7 +54,7 @@ function HeaderLinks({...props}) {
     };
     var onClickSections = {};
 
-    const {classes, userLoggedIn} = props;
+    const {classes} = props;
 
     return (
         <List className={classes.list + " " + classes.mlAuto}>
@@ -68,44 +68,16 @@ function HeaderLinks({...props}) {
                     About Us
                 </Link>
             </ListItem>
-            {
-                userLoggedIn &&
-                <ListItem className={classes.listItem}>
-                    <CustomDropdown
-                      noLiPadding
-                      buttonText="Account"
-                      buttonProps={{
-                          className: classes.navLink,
-                          color: "transparent"
-                      }}
-                      buttonIcon={Apps}
-                      dropdownList={[
-                          <Link to="/account" className={classes.dropdownLink}>
-                              Account Page
-                          </Link>,
-                          <Link to="/logout" className={classes.dropdownLink}>
-                              Logout
-                          </Link>
-                      ]}
-                    />
-                </ListItem>
-            }
-            {
-              !userLoggedIn &&
               <ListItem className={classes.listItem}>
                 <Link to="/login" className={classes.navLink}>
                   Login
                 </Link>
               </ListItem>
-            }
-            {
-              !userLoggedIn &&
               <ListItem className={classes.listItem}>
                 <Link to="/register" className={classes.navLink}>
                   Register
                 </Link>
               </ListItem>
-            }
         </List>
     );
 }

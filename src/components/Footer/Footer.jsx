@@ -13,7 +13,7 @@ import footerStyle from "../../assets/jss/material-kit-pro-react/components/foot
 function Footer(props) {
     const { children, content, classes, theme, big, className } = props;
     const themeType =
-      theme === "transparent" || theme == undefined ? false : true;
+      !(theme === "transparent" || theme === undefined);
     const footerClasses = classNames({
         [classes.footer]: true,
         [classes[theme]]: themeType,

@@ -16,7 +16,7 @@ import CardHeader from "../../components/Card/CardHeader.jsx";
 import CardFooter from "../../components/Card/CardFooter.jsx";
 import CustomInput from "../../components/CustomInput/CustomInput.jsx";
 
-import image from "../../assets/img/bg7.jpg";
+import image from "../../assets/img/bread.jpg";
 import {initializeGA} from "../../constants/utils";
 import {NavLink, Redirect} from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -131,7 +131,7 @@ class LoginPage extends React.Component {
                                                 e.preventDefault();
                                                 this.handleLoginClick();
                                             }}>
-                                                <CardHeader color="primary" className={classes.cardHeader}>
+                                                <CardHeader color="danger" className={classes.cardHeader}>
                                                     <h4>Login</h4>
                                                 </CardHeader>
                                                 <p className={classes.divider}>Please login below</p>
@@ -196,7 +196,7 @@ class LoginPage extends React.Component {
                                                     }
                                                 </CardBody>
                                                 <CardFooter className={classes.cardFooter}>
-                                                    <Button type={"submit"} simple color="primary"
+                                                    <Button type={"submit"} simple color="danger"
                                                             size="lg">Login</Button>
                                                 </CardFooter>
                                             </form>
