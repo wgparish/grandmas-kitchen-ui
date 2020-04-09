@@ -18,9 +18,9 @@ const aboutUsStyle = {
   },
   title: {
     ...title,
-    "&, & + h4": {
-      color: "#fff"
-    }
+    marginTop: "30px",
+    minHeight: "32px",
+    textDecoration: "none"
   },
   textCenter: {
     textAlign: "center"
@@ -60,7 +60,12 @@ const aboutUsStyle = {
     height: "18px",
     top: "3px",
     position: "relative"
-  }
+  },
+  cardHeader: {
+    marginBottom: "20px",
+    marginTop: "20px",
+    width: "100%"
+  },
 };
 
 export default aboutUsStyle;

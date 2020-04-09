@@ -64,7 +64,7 @@ function HeaderLinks({...props}) {
                 </Link>
             </ListItem>
             <ListItem className={classes.listItem}>
-                <Link to="/#" className={classes.navLink}>
+                <Link to="/about" className={classes.navLink}>
                     About Us
                 </Link>
             </ListItem>

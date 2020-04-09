@@ -26,7 +26,6 @@ class Header extends React.Component {
     super(props);
     this.state = {
       mobileOpen: false,
-      sportNames: [],
       userLoggedIn: true
     };
     this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
@@ -113,7 +112,7 @@ class Header extends React.Component {
               <Close />
             </IconButton>
             <div className={classes.appResponsive}>
-              <HeaderLinks dropdownHoverColor="info" userLoggedIn={this.state.userLoggedIn}/>
+              <HeaderLinks dropdownHoverColor="info" />
             </div>
           </Drawer>
         </Hidden>

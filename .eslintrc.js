@@ -12,9 +12,6 @@ module.exports = {
       jsx: true
     }
   },
-  rules: {
-    "react/jsx-uses-react": true
-  },
   plugins: ["react"],
   extends: [
     "eslint:recommended",

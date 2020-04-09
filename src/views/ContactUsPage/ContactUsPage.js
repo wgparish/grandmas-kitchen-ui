@@ -20,8 +20,8 @@ import PageFooter from "../../components/Footer/PageFooter.jsx";
 
 import contactUsStyle from "../../assets/jss/material-kit-pro-react/views/contactUsStyle.jsx";
 import { Email } from "@material-ui/icons";
-import Slider from "react-slick";
-import image from "../../assets/img/cherry_pie.jpg";
+import StaticImageCarousel from "../../components/ImageCarousel/StaticImageCarousel";
+import CardHeader from "../../components/Card/CardHeader";
 
 class ContactUsPage extends React.Component {
     constructor(props) {
@@ -79,32 +79,17 @@ class ContactUsPage extends React.Component {
 
     render() {
         const { classes, ...rest } = this.props;
-        const settings = {
-            dots: false,
-            infinite: true,
-            speed: 3000,
-            autoplaySpeed: 15000,
-            // slidesToShow: 1,
-            // slidesToScroll: 1,
-            autoplay: false,
-            variableWidth: true,
-            draggable: false,
-            swipe: false,
-            touchMove: false,
-            arrows: false,
-            touchThreshold: 0
-        };
 
         return (
             <div>
                 <Header
-                    color="transparent"
+                    color="white"
                     brand="Grandma's Kitchen"
                     links={<HeaderLinks dropdownHoverColor="info" />}
                     fixed
                     changeColorOnScroll={{
                         height: 300,
-                        color: "dark"
+                        color: "white"
                     }}
                     {...rest}
                 />
@@ -116,17 +101,19 @@ class ContactUsPage extends React.Component {
                                 top: "25%"
                             }}>
                         </div>
-                        <Slider className={classes.slickContainer} {...settings}>
-                            <div className={classes.slide}>
-                                <img src={image} alt={""} />
-                            </div>
-                        </Slider>
+                        <StaticImageCarousel/>
                     </div>
                 </Parallax>
                 <div className={classNames(classes.main, classes.mainRaised)}>
                     <div className={classes.contactContent}>
                         <div className={classes.container}>
-                            <h2 className={classes.title}>Contact Us: </h2>
+                            <GridContainer>
+                                <GridItem xs={12} sm={12} md={4}>
+                                    <CardHeader color="danger" className={classes.cardHeader}>
+                                        <h2>Contact Us</h2>
+                                    </CardHeader>
+                                </GridItem>
+                            </GridContainer>
                             <GridContainer>
                                 <GridItem md={6} sm={6}>
                                     <p>
