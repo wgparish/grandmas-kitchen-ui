@@ -21,8 +21,8 @@ const staticCarouselStyle = {
             overflow: "hidden",
             height: "100vh",
             width: "100vw",
-            "-webkit-filter": "brightness(65%)",
-            filter: "brightness(65%)"
+            "-webkit-filter": "brightness(100%)",
+            filter: "brightness(100%)"
         }
     }
 };

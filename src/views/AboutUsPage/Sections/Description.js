@@ -13,14 +13,18 @@ class Description extends React.Component{
         return (
             <div className={classes.sections}>
                 <GridContainer>
-                    <GridItem xs={12} sm={12} md={4}>
+                    <GridItem xs={3}>
                         <CardHeader color="danger" className={classes.cardHeader}>
                             <h3>About Us</h3>
                         </CardHeader>
                     </GridItem>
-                </GridContainer>
-                <GridContainer justify="center">
-                    <GridItem xs={12} sm={12} md={8}>
+                    <GridItem xs={12}>
+                        <br />
+                        <br />
+                    </GridItem>
+                    <GridItem xs={1}>
+                    </GridItem>
+                    <GridItem xs={6}>
                         <h5 className={classes.description}>
                             I've wanted to build this Recipe Sharing website for years. I've just never
                             had the know how. UNTIL NOW. I've been working on this over the past year &
@@ -28,13 +32,6 @@ class Description extends React.Component{
                         </h5>
                     </GridItem>
                 </GridContainer>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
             </div>
         );
     }

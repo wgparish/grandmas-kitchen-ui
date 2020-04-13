@@ -1,10 +1,10 @@
 const parallaxStyle = {
   parallax: {
-    height: "90vh",
-    maxHeight: "1600px",
-    overflow: "hidden",
+    height: "25vh",
+    maxHeight: "100vh",
+    // overflow: "hidden",
     position: "relative",
-    backgroundPosition: "50%",
+    backgroundPosition: "100%",
     backgroundSize: "cover",
     margin: "0",
     padding: "0",
@@ -53,13 +53,13 @@ const parallaxStyle = {
   },
   darkColor: {
     "&:before": {
-      background: "rgba(0, 0, 0, 0.5)"
+      background: "rgba(0, 0, 0, 1)"
     },
     "&:after,&:before": {
       position: "absolute",
       zIndex: "1",
       width: "100%",
-      height: "100%",
+      height: "10%",
       display: "block",
       left: "0",
       top: "0",

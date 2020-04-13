@@ -43,12 +43,6 @@ class AboutPage extends React.Component {
                 />
                 <Parallax filter="dark" >
                     <div>
-                        <div
-                            style={{
-                                position: "absolute",
-                                top: "25%"
-                            }}>
-                        </div>
                         <StaticImageCarousel/>
                     </div>
                 </Parallax>
