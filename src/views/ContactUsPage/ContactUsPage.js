@@ -22,6 +22,7 @@ import contactUsStyle from "../../assets/jss/material-kit-pro-react/views/contac
 import { Email } from "@material-ui/icons";
 import StaticImageCarousel from "../../components/ImageCarousel/StaticImageCarousel";
 import CardHeader from "../../components/Card/CardHeader";
+import PublicController from "../../api/PublicController";
 
 class ContactUsPage extends React.Component {
     constructor(props) {
@@ -48,33 +49,32 @@ class ContactUsPage extends React.Component {
     }
 
     sendSupportRequest() {
-        // CustomerSupportController.submitSupportRequest(
-        //     this.state.inputName,
-        //     this.state.inputEmail,
-        //     this.state.inputPhone,
-        //     this.state.inputTechnical,
-        //     this.state.inputMessage)
-        //     .then(response => this.setState({finished: true}))
-        //     .catch(error => {
-        //         if(typeof error !== "undefined" && typeof error.response !== "undefined" && error.response.status === 400) {
-        //             let errors = error.response.data;
-        //             let inputNameErrorOpt = errors.filter(errorStr => errorStr.includes("Full Name"));
-        //             let inputEmailErrorOpt = errors.filter(errorStr => errorStr.includes("Email Address"));
-        //             let inputPhoneErrorOpt = errors.filter(errorStr => errorStr.includes("Phone Number"));
-        //             let inputMessageErrorOpt = errors.filter(errorStr => errorStr.includes("Support Message"));
-        //             let inputNameError = inputNameErrorOpt.length > 0 ? inputNameErrorOpt[0] : null;
-        //             let inputEmailError = inputEmailErrorOpt.length > 0 ? inputEmailErrorOpt[0] : null;
-        //             let inputPhoneError = inputPhoneErrorOpt.length > 0 ? inputPhoneErrorOpt[0] : null;
-        //             let inputMessageError = inputMessageErrorOpt.length > 0 ? inputMessageErrorOpt[0] : null;
-        //             this.setState({
-        //                 finished: false,
-        //                 inputNameError: inputNameError,
-        //                 inputEmailError: inputEmailError,
-        //                 inputPhoneError: inputPhoneError,
-        //                 inputMessageError: inputMessageError
-        //             });
-        //         }
-        //     });
+        PublicController.submitContactUsEmail(
+            this.state.inputName,
+            this.state.inputEmail,
+            this.state.inputPhone,
+            this.state.inputMessage)
+            .then(() => this.setState({finished: true}))
+            .catch(error => {
+                if(typeof error !== "undefined" && typeof error.response !== "undefined" && error.response.status === 400) {
+                    let errors = error.response.data;
+                    let inputNameErrorOpt = errors.filter(errorStr => errorStr.includes("Full Name"));
+                    let inputEmailErrorOpt = errors.filter(errorStr => errorStr.includes("Email Address"));
+                    let inputPhoneErrorOpt = errors.filter(errorStr => errorStr.includes("Phone Number"));
+                    let inputMessageErrorOpt = errors.filter(errorStr => errorStr.includes("Support Message"));
+                    let inputNameError = inputNameErrorOpt.length > 0 ? inputNameErrorOpt[0] : null;
+                    let inputEmailError = inputEmailErrorOpt.length > 0 ? inputEmailErrorOpt[0] : null;
+                    let inputPhoneError = inputPhoneErrorOpt.length > 0 ? inputPhoneErrorOpt[0] : null;
+                    let inputMessageError = inputMessageErrorOpt.length > 0 ? inputMessageErrorOpt[0] : null;
+                    this.setState({
+                        finished: false,
+                        inputNameError: inputNameError,
+                        inputEmailError: inputEmailError,
+                        inputPhoneError: inputPhoneError,
+                        inputMessageError: inputMessageError
+                    });
+                }
+            });
     }
 
     render() {
