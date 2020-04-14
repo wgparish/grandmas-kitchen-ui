@@ -9,7 +9,7 @@ import staticCarouselStyle from "../../assets/jss/material-kit-pro-react/views/c
 import image from "../../assets/img/cherry_pie.jpg";
 
 function StaticImageCarousel(props) {
-    const { classes } = props;
+    const {classes} = props;
     const settings = {
         dots: false,
         infinite: true,
@@ -29,7 +29,7 @@ function StaticImageCarousel(props) {
     return (
         <Slider className={classes.slickContainer} {...settings}>
             <div className={classes.slide}>
-                <img src={image} alt={""} />
+                <img src={image} alt={""}/>
             </div>
         </Slider>
     );

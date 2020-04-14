@@ -1,7 +1,8 @@
-.sweet-alert{
-  &:focus{
+.sweet-alert {
+  &:focus {
     outline: none;
   }
+
   input.form-control {
     border: 0;
     background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
@@ -23,6 +24,7 @@
     width: 100%;
     color: #555;
   }
+
   input.form-control:focus {
     outline: none;
     background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);

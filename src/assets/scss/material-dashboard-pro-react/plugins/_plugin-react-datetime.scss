@@ -3,7 +3,8 @@
 */
 .rdt {
   position: relative;
-  .rdtPicker{
+
+  .rdtPicker {
     -webkit-transition: all 150ms linear;
     -moz-transition: all 150ms linear;
     -o-transition: all 150ms linear;
@@ -14,13 +15,15 @@
     display: block;
     opacity: 0;
   }
-  &.rdtOpen{
-    .rdtPicker{
+
+  &.rdtOpen {
+    .rdtPicker {
       opacity: 1;
       visibility: visible;
       margin-top: 0;
     }
   }
+
   input.form-control {
     border: 0;
     background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
@@ -42,6 +45,7 @@
     width: 100%;
     color: #555;
   }
+
   input.form-control:focus {
     outline: none;
     background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
@@ -50,6 +54,7 @@
     transition-duration: 0.3s;
   }
 }
+
 .rdtPicker {
   display: none;
   position: absolute;
@@ -64,7 +69,7 @@
   background-clip: padding-box;
   min-width: 160px;
 
-  &:before{
+  &:before {
     display: inline-block;
     position: absolute;
     width: 0;
@@ -79,7 +84,8 @@
     border-right: .4em solid transparent;
     border-left: .4em solid transparent;
   }
-  &:after{
+
+  &:after {
     border-bottom: .4em solid #FFFFFF;
     border-right: .4em solid transparent;
     border-left: .4em solid transparent;
@@ -95,6 +101,7 @@
   display: block;
   top: 40px;
 }
+
 .rdtStatic .rdtPicker {
   box-shadow: none;
   position: static;
@@ -112,21 +119,25 @@
   border-color: $white-color !important;
   border-collapse: collapse;
 }
+
 .rdtPicker td,
 .rdtPicker th {
   text-align: center;
   padding: 1px;
 }
+
 .rdtPicker td {
   cursor: pointer;
 }
-.rdtDay{
+
+.rdtDay {
   height: 30px;
   line-height: 33px;
   width: 30px;
   text-align: center;
   padding: 0px;
   border-radius: 50%;
+
   &.rdtToday.rdtActive,
   &.rdtActive,
   &.rdtActive:hover {
@@ -135,9 +146,10 @@
     @include shadow-big-color($brand-primary);
   }
 }
-.rdtDays{
-  tr{
-    .dow{
+
+.rdtDays {
+  tr {
+    .dow {
       border-bottom: 1px solid #E3E3E3;
       text-align: center;
       font-size: 12px;
@@ -146,8 +158,9 @@
       padding-bottom: 5px;
       padding-top: 10px;
     }
+
     .rdtOld,
-    .rdtNew{
+    .rdtNew {
       color: $grey-A400;
     }
   }
@@ -161,12 +174,15 @@
   background: #eeeeee;
   cursor: pointer;
 }
+
 .rdtPicker td.rdtToday {
   position: relative;
 }
+
 .rdtPicker td.rdtActive.rdtToday:before {
   border-bottom-color: #fff;
 }
+
 .rdtPicker td.rdtDisabled,
 .rdtPicker td.rdtDisabled:hover {
   background: none;
@@ -177,21 +193,25 @@
 .rdtPicker td span.rdtOld {
   color: #999999;
 }
+
 .rdtPicker td span.rdtDisabled,
 .rdtPicker td span.rdtDisabled:hover {
   background: none;
   color: #999999;
   cursor: not-allowed;
 }
+
 .rdtPicker .dow {
   width: 14.2857%;
   border-bottom: none;
 }
+
 .rdtPicker th.rdtSwitch {
   width: 50px;
   padding: 5px;
   border-radius: 4px;
 }
+
 .rdtPicker th.rdtNext,
 .rdtPicker th.rdtPrev {
   font-size: 21px;
@@ -200,12 +220,12 @@
   line-height: 33px;
 }
 
-.rdtPicker{
+.rdtPicker {
   .dow,
   th.rdtSwitch,
   th.rdtNext,
   th.rdtPrev,
-  .rdtTimeToggle{
+  .rdtTimeToggle {
     color: $brand-primary;
   }
 }
@@ -215,10 +235,10 @@
 .rdtNext span {
   display: block;
   -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none;   /* Chrome/Safari/Opera */
-  -khtml-user-select: none;    /* Konqueror */
-  -moz-user-select: none;      /* Firefox */
-  -ms-user-select: none;       /* Internet Explorer/Edge */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
 
 }
@@ -229,9 +249,11 @@
   color: #999999;
   cursor: not-allowed;
 }
+
 .rdtPicker thead tr:first-child th {
   cursor: pointer;
 }
+
 .rdtPicker thead tr:first-child th:hover {
   background: #eeeeee;
 }
@@ -242,6 +264,7 @@
   background: none;
   cursor: pointer;
 }
+
 .rdtPicker button:hover {
   background-color: #eee;
 }
@@ -257,6 +280,7 @@ td.rdtYear {
   width: 25%;
   cursor: pointer;
 }
+
 td.rdtMonth:hover,
 td.rdtYear:hover {
   background: #eee;
@@ -266,7 +290,7 @@ td.rdtYear:hover {
   display: inline-block;
 }
 
-.rdtCounters{
+.rdtCounters {
   > div {
     float: left;
     width: 40px;
@@ -274,7 +298,8 @@ td.rdtYear:hover {
     margin: 3px;
     border-radius: 50%;
   }
-  .rdtCounterSeparator{
+
+  .rdtCounterSeparator {
     width: 0;
     border: 1px solid transparent;
   }
@@ -286,15 +311,17 @@ td.rdtYear:hover {
 
 .rdtCounter {
   width: 40px;
-  .rdtCount{
+
+  .rdtCount {
     padding: 7px;
     height: 40px;
     border: 1px solid transparent;
   }
 }
-.rdtCounters{
-  .rdtCounter:last-child{
-    .rdtCount{
+
+.rdtCounters {
+  .rdtCounter:last-child {
+    .rdtCount {
       color: $brand-primary;
       border-radius: 50%;
       border: 1px solid $brand-primary;
@@ -306,6 +333,7 @@ td.rdtYear:hover {
   padding: 7px;
   line-height: 100px;
 }
+
 .rdtCounter .rdtBtn {
   line-height: 40px;
   cursor: pointer;
@@ -320,16 +348,18 @@ td.rdtYear:hover {
 
 
   -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none;   /* Chrome/Safari/Opera */
-  -khtml-user-select: none;    /* Konqueror */
-  -moz-user-select: none;      /* Firefox */
-  -ms-user-select: none;       /* Internet Explorer/Edge */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
 }
+
 .rdtCounter .rdtBtn:hover {
   background: #eee;
   color: #797979;
 }
+
 .rdtCounter .rdtCount {
   font-size: inherit;
   line-height: 25px;
@@ -346,11 +376,13 @@ td.rdtYear:hover {
   font-size: inherit;
   margin-top: 37px;
 }
+
 .rdtMonths,
-.rdtYears{
+.rdtYears {
   padding-bottom: 10px;
+
   .rdtMonth,
-  .rdtYear{
+  .rdtYear {
     display: inline-block;
     width: 56px;
     height: 56px;
@@ -360,7 +392,7 @@ td.rdtYear:hover {
     border-radius: 50%;
     text-align: center;
 
-    &.rdtActive{
+    &.rdtActive {
       background-color: $brand-primary !important;
       color: $white-color;
     }

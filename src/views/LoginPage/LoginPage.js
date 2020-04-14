@@ -23,6 +23,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import loginPageStyle from "../../assets/jss/material-kit-pro-react/views/loginPageStyle.jsx";
 import Fade from "@material-ui/core/Fade";
 import PageFooter from "../../components/Footer/PageFooter";
+import UserController from "../../api/UserController";
+import * as ReactGA from "react-ga";
 
 class LoginPage extends React.Component {
     constructor(props) {
@@ -71,35 +73,40 @@ class LoginPage extends React.Component {
         let password = this.state.password;
         console.log("Email: " + email);
         console.log("Password: " + password);
-        // UserAccountController.login(email, password)
-        //     .then(response => this.handleLoginServerSuccessResponse(response))
-        //     .catch(error => this.handleLoginServerError(error));
+        UserController.login({
+            email: email,
+            password: password
+        })
+            .then(response => this.handleLoginServerSuccessResponse(response))
+            .catch(error => this.handleLoginServerError(error));
     }
 
-    // handleLoginServerError(error) {
-    //     console.log(error);
-    //     if (error != null && error.response != null && error.response.status != null) {
-    //         let statusCode = error.response.status;
-    //         this.setState({userLoggedIn: false});
-    //         if (statusCode === 400) {
-    //             let responseBody = typeof error.response.data === "string" ? [error.response.data] : error.response.data; //should be array of strings
-    //             this.setState({errorText: responseBody});
-    //         } else if (statusCode === 403) { //user already logged in somehow
-    //             this.props.history.push("/");
-    //         } else {
-    //             this.setState({errorText: "We are experiencing technical difficulties. Please try again, or contact support if this persists."});
-    //         }
-    //     }
-    // }
+    handleLoginServerError(error) {
+        console.log(error);
+        if (error != null && error.response != null && error.response.status != null) {
+            let statusCode = error.response.status;
+            this.setState({userLoggedIn: false});
+            if (statusCode === 400) {
+                let responseBody = typeof error.response.data === "string" ? [error.response.data] : error.response.data; //should be array of strings
+                this.setState({errorText: responseBody});
+            } else if (statusCode === 403) { //user already logged in somehow
+                this.props.history.push("/");
+            } else {
+                this.setState({errorText: "We are experiencing technical difficulties. Please try again, or contact support if this persists."});
+            }
+        }
+    }
 
-    // handleLoginServerSuccessResponse(response) {
-    //     ReactGA.event({
-    //         category: 'User',
-    //         action: 'Logged In',
-    //         label: this.state.email.split('@')[0]
-    //     });
-    //     this.setState({userLoggedIn: true});
-    // }
+    handleLoginServerSuccessResponse(response) {
+        ReactGA.event({
+            category: 'User',
+            action: 'Logged In',
+            label: this.state.email.split('@')[0]
+        });
+        this.setState({userLoggedIn: true});
+
+        console.log(response)
+    }
 
     render() {
         const {classes, ...rest} = this.props;
@@ -218,90 +225,3 @@ class LoginPage extends React.Component {
 }
 
 export default withStyles(loginPageStyle)(LoginPage);
-
-// const useStyles = makeStyles(styles);
-//
-// export default function LoginPage(props) {
-//   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
-//   setTimeout(function() {
-//     setCardAnimation("");
-//   }, 700);
-//   const classes = useStyles();
-//   const { ...rest } = props;
-//   return (
-//     <div>
-//       <Header
-//         absolute
-//         color="transparent"
-//         brand="Material Kit React"
-//         rightLinks={<HeaderLinks />}
-//         {...rest}
-//       />
-//       <div
-//         className={classes.pageHeader}
-//         style={{
-//           backgroundImage: "url(" + image + ")",
-//           backgroundSize: "cover",
-//           backgroundPosition: "top center"
-//         }}
-//       >
-//         <div className={classes.container}>
-//           <GridContainer justify="center">
-//             <GridItem xs={12} sm={12} md={4}>
-//               <Card className={classes[cardAnimaton]}>
-//                 <form className={classes.form}>
-//                   <CardHeader color="primary" className={classes.cardHeader}>
-//                     <h2>Login</h2>
-//                   </CardHeader>
-//                   <p className={classes.divider}>Sign In Below</p>
-//                   <CardBody>
-//                     <CustomInput
-//                       labelText="Email..."
-//                       id="email"
-//                       formControlProps={{
-//                         fullWidth: true
-//                       }}
-//                       inputProps={{
-//                         type: "email",
-//                         endAdornment: (
-//                           <InputAdornment position="end">
-//                             <Email className={classes.inputIconsColor} />
-//                           </InputAdornment>
-//                         )
-//                       }}
-//                     />
-//                     <CustomInput
-//                       labelText="Password"
-//                       id="pass"
-//                       formControlProps={{
-//                         fullWidth: true
-//                       }}
-//                       inputProps={{
-//                         type: "password",
-//                         endAdornment: (
-//                           <InputAdornment position="end">
-//                             <Icon className={classes.inputIconsColor}>
-//                               lock_outline
-//                             </Icon>
-//                           </InputAdornment>
-//                         ),
-//                         autoComplete: "off"
-//                       }}
-//                     />
-//                   </CardBody>
-//                   <p className={classes.divider}>Or Sign Up Here</p>
-//                   <CardFooter className={classes.cardFooter}>
-//                     <Button simple color="primary" size="lg">
-//                       Get started
-//                     </Button>
-//                   </CardFooter>
-//                 </form>
-//               </Card>
-//             </GridItem>
-//           </GridContainer>
-//         </div>
-//         <Footer whiteFont />
-//       </div>
-//     </div>
-//   );
-// }

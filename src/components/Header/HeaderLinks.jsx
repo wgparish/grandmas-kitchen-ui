@@ -1,19 +1,18 @@
 /*eslint-disable*/
 import React from "react";
 // react components for routing our app without refresh
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ViewCarousel from "@material-ui/icons/ViewCarousel";
 // @material-ui/icons
-import { Apps } from "@material-ui/icons";
+import {AccountCircle} from "@material-ui/icons";
 // core components
-import CustomDropdown from "../CustomDropdown/CustomDropdown.jsx";
 
 import headerLinksStyle from "../../assets/jss/material-kit-pro-react/components/headerLinksStyle.jsx";
+import {ListItemIcon} from "@material-ui/core";
 
 function HeaderLinks({...props}) {
 
@@ -54,7 +53,7 @@ function HeaderLinks({...props}) {
     };
     var onClickSections = {};
 
-    const {classes} = props;
+    const {classes, userLoggedIn} = props;
 
     return (
         <List className={classes.list + " " + classes.mlAuto}>
@@ -68,16 +67,32 @@ function HeaderLinks({...props}) {
                     About Us
                 </Link>
             </ListItem>
-              <ListItem className={classes.listItem}>
-                <Link to="/login" className={classes.navLink}>
-                  Login
-                </Link>
-              </ListItem>
-              <ListItem className={classes.listItem}>
-                <Link to="/register" className={classes.navLink}>
-                  Register
-                </Link>
-              </ListItem>
+            {
+                userLoggedIn &&
+                <ListItem className={classes.listItem}>
+                    <Link to="/account" className={classes.navLink}>
+                        <ListItemIcon>
+                            <AccountCircle />
+                        </ListItemIcon>
+                    </Link>
+                </ListItem>
+            }
+            {
+                !userLoggedIn &&
+                <ListItem className={classes.listItem}>
+                    <Link to="/login" className={classes.navLink}>
+                        Login
+                    </Link>
+                </ListItem>
+            }
+            {
+                !userLoggedIn &&
+                <ListItem className={classes.listItem}>
+                    <Link to="/register" className={classes.navLink}>
+                        Register
+                    </Link>
+                </ListItem>
+            }
         </List>
     );
 }

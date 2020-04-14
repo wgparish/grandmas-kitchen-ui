@@ -31,17 +31,17 @@ class AboutPage extends React.Component {
     }
 
     render() {
-        const { classes, ...rest } = this.props;
+        const {classes, ...rest} = this.props;
         return (
             <div>
                 <Header
                     color="white"
                     brand="Grandma's Kitchen"
-                    links={<HeaderLinks dropdownHoverColor="info" />}
+                    links={<HeaderLinks dropdownHoverColor="info"/>}
                     fixed
                     {...rest}
                 />
-                <Parallax filter="dark" >
+                <Parallax filter="dark">
                     <div>
                         <StaticImageCarousel/>
                     </div>
@@ -58,4 +58,5 @@ class AboutPage extends React.Component {
         );
     }
 }
+
 export default withStyles(aboutUsStyle)(AboutPage);

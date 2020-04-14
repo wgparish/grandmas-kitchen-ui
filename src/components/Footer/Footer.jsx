@@ -11,9 +11,9 @@ import footerStyle from "../../assets/jss/material-kit-pro-react/components/foot
 // @material-ui/icons
 
 function Footer(props) {
-    const { children, content, classes, theme, big, className } = props;
+    const {children, content, classes, theme, big, className} = props;
     const themeType =
-      !(theme === "transparent" || theme === undefined);
+        !(theme === "transparent" || theme === undefined);
     const footerClasses = classNames({
         [classes.footer]: true,
         [classes[theme]]: themeType,
@@ -25,20 +25,20 @@ function Footer(props) {
     });
 
     return (
-      <footer className={footerClasses}>
-          <div className={classes.container}>
-              {children !== undefined ? (
-                <div>
-                    <div className={classes.content}>{children}</div>
-                    <hr />
-                </div>
-              ) : (
-                " "
-              )}
-              {content}
-              <div className={classes.clearFix} />
-          </div>
-      </footer>
+        <footer className={footerClasses}>
+            <div className={classes.container}>
+                {children !== undefined ? (
+                    <div>
+                        <div className={classes.content}>{children}</div>
+                        <hr/>
+                    </div>
+                ) : (
+                    " "
+                )}
+                {content}
+                <div className={classes.clearFix}/>
+            </div>
+        </footer>
     );
 }
 

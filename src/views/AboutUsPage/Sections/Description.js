@@ -5,10 +5,10 @@ import React from "react";
 import basicsStyle from "../../../assets/jss/material-kit-pro-react/views/componentsSections/basicsStyle";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-class Description extends React.Component{
+class Description extends React.Component {
 
     render() {
-        const { classes } = this.props;
+        const {classes} = this.props;
 
         return (
             <div className={classes.sections}>
@@ -19,8 +19,8 @@ class Description extends React.Component{
                         </CardHeader>
                     </GridItem>
                     <GridItem xs={12}>
-                        <br />
-                        <br />
+                        <br/>
+                        <br/>
                     </GridItem>
                     <GridItem xs={1}>
                     </GridItem>
@@ -36,4 +36,5 @@ class Description extends React.Component{
         );
     }
 }
+
 export default withStyles(basicsStyle)(Description);

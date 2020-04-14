@@ -4,8 +4,7 @@ const staticCarouselStyle = {
         height: "100%",
         width: "100%",
         display: "flex",
-        "&, & slide": {
-        },
+        "&, & slide": {},
         "& slickTrack": {
             height: "100%",
         },

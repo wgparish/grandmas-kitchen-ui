@@ -19,7 +19,7 @@ import Button from "../../components/CustomButtons/Button.jsx";
 import PageFooter from "../../components/Footer/PageFooter.jsx";
 
 import contactUsStyle from "../../assets/jss/material-kit-pro-react/views/contactUsStyle.jsx";
-import { Email } from "@material-ui/icons";
+import {Email} from "@material-ui/icons";
 import StaticImageCarousel from "../../components/ImageCarousel/StaticImageCarousel";
 import CardHeader from "../../components/Card/CardHeader";
 import PublicController from "../../api/PublicController";
@@ -56,7 +56,7 @@ class ContactUsPage extends React.Component {
             this.state.inputMessage)
             .then(() => this.setState({finished: true}))
             .catch(error => {
-                if(typeof error !== "undefined" && typeof error.response !== "undefined" && error.response.status === 400) {
+                if (typeof error !== "undefined" && typeof error.response !== "undefined" && error.response.status === 400) {
                     let errors = error.response.data;
                     let inputNameErrorOpt = errors.filter(errorStr => errorStr.includes("Full Name"));
                     let inputEmailErrorOpt = errors.filter(errorStr => errorStr.includes("Email Address"));
@@ -78,14 +78,14 @@ class ContactUsPage extends React.Component {
     }
 
     render() {
-        const { classes, ...rest } = this.props;
+        const {classes, ...rest} = this.props;
 
         return (
             <div>
                 <Header
                     color="white"
                     brand="Grandma's Kitchen"
-                    links={<HeaderLinks dropdownHoverColor="info" />}
+                    links={<HeaderLinks dropdownHoverColor="info"/>}
                     fixed
                     changeColorOnScroll={{
                         height: 300,
@@ -93,7 +93,7 @@ class ContactUsPage extends React.Component {
                     }}
                     {...rest}
                 />
-                <Parallax filter="dark" >
+                <Parallax filter="dark">
                     <div>
                         <div
                             style={{
@@ -118,7 +118,7 @@ class ContactUsPage extends React.Component {
                                 <GridItem md={6} sm={6}>
                                     <p>
                                         Feel Free to contact me with any questions, comments, or concerns you may have.
-                                        <br />
+                                        <br/>
                                     </p>
                                     <form>
                                         <CustomInput
@@ -186,7 +186,8 @@ class ContactUsPage extends React.Component {
                                         {
                                             this.state.finished === true &&
                                             <div className={classes.textCenter}>
-                                                <p>We have received your feedback and will respond to you as soon as possible.</p>
+                                                <p>We have received your feedback and will respond to you as soon as
+                                                    possible.</p>
                                             </div>
                                         }
                                     </form>
@@ -213,7 +214,7 @@ class ContactUsPage extends React.Component {
                                         title="Give us a ring"
                                         description={
                                             <p>
-                                                +1 678 - 977 - 4383 <br />
+                                                +1 678 - 977 - 4383 <br/>
                                                 Mon - Sat, 8:00 am - 5:00 pm
                                             </p>
                                         }
@@ -237,7 +238,7 @@ class ContactUsPage extends React.Component {
                                         title="Legal Information"
                                         description={
                                             <p>
-                                                Wyllian, LLC. <br />
+                                                Wyllian, LLC. <br/>
                                             </p>
                                         }
                                         icon={BusinessCenter}
