@@ -46,14 +46,8 @@ class RecipeController {
         });
     }
 
-    static recipeFavoriteList = async (groupId, cookbookId) => {
-        return api.get(this.recipeFavoriteListUrl, {
-            params: {
-                groupId: groupId,
-                cookbookId: cookbookId
-            },
-            withCredentials: true
-        });
+    static recipeFavoriteList = async () => {
+        return api.get(this.recipeFavoriteListUrl, { withCredentials: true });
     }
 
 }
