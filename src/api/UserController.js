@@ -23,6 +23,7 @@ class UserController {
      * @returns {Promise<AxiosResponse<any>>} a promise to handle with a then, catch, finally.
      */
     static login = async (loginRequest) => {
+        console.log(loginRequest);
         return api.post(this.loginUrl, loginRequest, {withCredentials: true});
     }
 
@@ -59,6 +60,7 @@ class UserController {
     }
 
     static register = async (userRegisterRequest) => {
+        console.log(userRegisterRequest);
         return api.post(this.registerUrl, userRegisterRequest, {withCredentials: true});
     }
 

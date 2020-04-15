@@ -55,16 +55,13 @@ class LoginPage extends React.Component {
             }.bind(this),
             700
         );
-        //this.setState({userLoggedIn: false});
         this.loadUserLoggedIn();
-        // this.loadBackgroundImageId();
     }
 
     loadUserLoggedIn() {
-        this.setState({userLoggedIn: false})
-        // UserAccountController.ping()
-        //     .then(response => this.setState({ userLoggedIn: true }))
-        //     .catch(error => this.setState({ userLoggedIn: false }));
+        UserController.getAccount()
+            .then(() => this.setState({ userLoggedIn: true }))
+            .catch(() => this.setState({ userLoggedIn: false }));
     }
 
     handleLoginClick() {
