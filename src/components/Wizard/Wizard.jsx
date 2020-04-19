@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
-import Button from "components/CustomButtons/Button.jsx";
-import Card from "components/Card/Card.jsx";
+import Button from "../CustomButtons/Button.jsx";
+import Card from "../Card/Card.jsx";
 
 import wizardStyle from "../../assets/jss/material-dashboard-pro-react/components/wizardStyle.jsx";
 
@@ -330,7 +330,7 @@ class Wizard extends React.Component {
                         <div className={classes.right}>
                             {this.state.nextButton ? (
                                 <Button
-                                    color="rose"
+                                    color="danger"
                                     className={this.props.nextButtonClasses}
                                     onClick={() => this.nextButtonClick()}
                                 >
@@ -339,7 +339,7 @@ class Wizard extends React.Component {
                             ) : null}
                             {this.state.finishButton && !this.state.ignoreValidation ? (
                                 <Button
-                                    color="rose"
+                                    color="danger"
                                     className={this.finishButtonClasses}
                                     onClick={() => this.finishButtonClick()}
                                 >
@@ -356,7 +356,7 @@ class Wizard extends React.Component {
 }
 
 Wizard.defaultProps = {
-    color: "rose",
+    color: "danger",
     title: "Here should go your title",
     subtitle: "And this would be your subtitle",
     previousButtonText: "Previous",
@@ -383,7 +383,7 @@ Wizard.propTypes = {
         "danger",
         "success",
         "info",
-        "rose"
+        "danger"
     ]),
     title: PropTypes.string,
     subtitle: PropTypes.string,

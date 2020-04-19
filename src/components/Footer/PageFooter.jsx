@@ -69,7 +69,7 @@ class PageFooter extends React.Component {
             >
                 <div className={classes.footer}>
                     <GridContainer>
-                        <GridItem xs={0} sm={2} md={2}/>
+                        <GridItem xs={12} sm={2} md={2}/>
                         <GridItem xs={12} sm={4} md={4}>
                             <h4>About</h4>
                             <ul className={classes.linksVertical}>
@@ -85,7 +85,7 @@ class PageFooter extends React.Component {
                                 </li>
                             </ul>
                         </GridItem>
-                        <GridItem xs={0} sm={2} md={2}/>
+                        <GridItem xs={12} sm={2} md={2}/>
                         <GridItem xs={12} sm={4} md={4}>
                             <h4>Legal</h4>
                             <ul className={classes.linksVertical}>
@@ -101,7 +101,7 @@ class PageFooter extends React.Component {
                                 </li>
                             </ul>
                         </GridItem>
-                        <GridItem xs={0} sm={2} md={2}/>
+                        <GridItem xs={12} sm={2} md={2}/>
                     </GridContainer>
                 </div>
             </Footer>
