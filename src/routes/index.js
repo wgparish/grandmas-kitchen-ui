@@ -6,6 +6,7 @@ import LogoutPage from "../views/LogoutPage/LogoutPage";
 import RegisterPage from "../views/RegisterPage/RegisterPage";
 import ForgotPasswordPage from "../views/ForgotPasswordPage/ForgotPasswordPage";
 import ProfilePage from "../views/ProfilePage/ProfilePage";
+import GroupPage from "../views/GroupPage/GroupPage";
 
 let indexRoutes = [
     {path: "/login", name: "LoginPage", component: LoginPage},
@@ -15,6 +16,7 @@ let indexRoutes = [
     {path: "/register", name: "RegisterPage", component: RegisterPage},
     {path: "/forgot-password", name: "ForgotPasswordPage", component: ForgotPasswordPage},
     {path: "/account", name: "ProfilePage", component: ProfilePage},
+    {path: "/group", name: "GroupPage", component: GroupPage},
 
 
 

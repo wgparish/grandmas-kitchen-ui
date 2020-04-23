@@ -70,6 +70,14 @@ function HeaderLinks({...props}) {
             {
                 userLoggedIn &&
                 <ListItem className={classes.listItem}>
+                    <Link to="/group" className={classes.navLink}>
+                        Groups
+                    </Link>
+                </ListItem>
+            }
+            {
+                userLoggedIn &&
+                <ListItem className={classes.listItem}>
                     <Link to="/account" className={classes.navLink}>
                         <ListItemIcon>
                             <AccountCircle />
