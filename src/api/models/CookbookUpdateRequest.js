@@ -11,7 +11,7 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+import ApiClient from "../ApiClient";
 
 /**
  * The CookbookUpdateRequest model module.
@@ -19,61 +19,61 @@ import ApiClient from '../ApiClient';
  * @version v1.0.0
  */
 export default class CookbookUpdateRequest {
-    /**
-     * Constructs a new <code>CookbookUpdateRequest</code>.
-     * @alias module:model/CookbookUpdateRequest
-     * @class
-     */
+  /**
+   * @member {Number} cookbookId
+   */
+  cookbookId = undefined;
+  /**
+   * @member {Number} groupId
+   */
+  groupId = undefined;
+  /**
+   * @member {String} name
+   */
+  name = undefined;
+  /**
+   * @member {String} description
+   */
+  description = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>CookbookUpdateRequest</code>.
+   * @alias module:model/CookbookUpdateRequest
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>CookbookUpdateRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/CookbookUpdateRequest} obj Optional instance to populate.
+   * @return {module:model/CookbookUpdateRequest} The populated <code>CookbookUpdateRequest</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new CookbookUpdateRequest();
+
+
+      if (data.hasOwnProperty("cookbookId")) {
+        obj["cookbookId"] = ApiClient.convertToType(data["cookbookId"], "Number");
+      }
+      if (data.hasOwnProperty("groupId")) {
+        obj["groupId"] = ApiClient.convertToType(data["groupId"], "Number");
+      }
+      if (data.hasOwnProperty("name")) {
+        obj["name"] = ApiClient.convertToType(data["name"], "String");
+      }
+      if (data.hasOwnProperty("description")) {
+        obj["description"] = ApiClient.convertToType(data["description"], "String");
+      }
     }
-
-    /**
-     * Constructs a <code>CookbookUpdateRequest</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/CookbookUpdateRequest} obj Optional instance to populate.
-     * @return {module:model/CookbookUpdateRequest} The populated <code>CookbookUpdateRequest</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new CookbookUpdateRequest();
-
-
-            if (data.hasOwnProperty('cookbookId')) {
-                obj['cookbookId'] = ApiClient.convertToType(data['cookbookId'], 'Number');
-            }
-            if (data.hasOwnProperty('groupId')) {
-                obj['groupId'] = ApiClient.convertToType(data['groupId'], 'Number');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('description')) {
-                obj['description'] = ApiClient.convertToType(data['description'], 'String');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {Number} cookbookId
-     */
-    cookbookId = undefined;
-    /**
-     * @member {Number} groupId
-     */
-    groupId = undefined;
-    /**
-     * @member {String} name
-     */
-    name = undefined;
-    /**
-     * @member {String} description
-     */
-    description = undefined;
+    return obj;
+  }
 
 
 }

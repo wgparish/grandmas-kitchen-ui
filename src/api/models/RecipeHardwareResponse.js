@@ -11,7 +11,7 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+import ApiClient from "../ApiClient";
 
 /**
  * The RecipeHardwareResponse model module.
@@ -19,54 +19,54 @@ import ApiClient from '../ApiClient';
  * @version v1.0.0
  */
 export default class RecipeHardwareResponse {
-    /**
-     * Constructs a new <code>RecipeHardwareResponse</code>.
-     * @alias module:model/RecipeHardwareResponse
-     * @class
-     */
+  /**
+   * @member {Number} id
+   */
+  id = undefined;
+  /**
+   * @member {String} hardwareName
+   */
+  hardwareName = undefined;
+  /**
+   * @member {Boolean} active
+   */
+  active = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>RecipeHardwareResponse</code>.
+   * @alias module:model/RecipeHardwareResponse
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>RecipeHardwareResponse</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/RecipeHardwareResponse} obj Optional instance to populate.
+   * @return {module:model/RecipeHardwareResponse} The populated <code>RecipeHardwareResponse</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new RecipeHardwareResponse();
+
+
+      if (data.hasOwnProperty("id")) {
+        obj["id"] = ApiClient.convertToType(data["id"], "Number");
+      }
+      if (data.hasOwnProperty("hardwareName")) {
+        obj["hardwareName"] = ApiClient.convertToType(data["hardwareName"], "String");
+      }
+      if (data.hasOwnProperty("active")) {
+        obj["active"] = ApiClient.convertToType(data["active"], "Boolean");
+      }
     }
-
-    /**
-     * Constructs a <code>RecipeHardwareResponse</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/RecipeHardwareResponse} obj Optional instance to populate.
-     * @return {module:model/RecipeHardwareResponse} The populated <code>RecipeHardwareResponse</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new RecipeHardwareResponse();
-
-
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
-            }
-            if (data.hasOwnProperty('hardwareName')) {
-                obj['hardwareName'] = ApiClient.convertToType(data['hardwareName'], 'String');
-            }
-            if (data.hasOwnProperty('active')) {
-                obj['active'] = ApiClient.convertToType(data['active'], 'Boolean');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {Number} id
-     */
-    id = undefined;
-    /**
-     * @member {String} hardwareName
-     */
-    hardwareName = undefined;
-    /**
-     * @member {Boolean} active
-     */
-    active = undefined;
+    return obj;
+  }
 
 
 }

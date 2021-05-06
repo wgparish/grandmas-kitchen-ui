@@ -11,7 +11,7 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+import ApiClient from "../ApiClient";
 
 /**
  * The GroupAddRequest model module.
@@ -19,54 +19,54 @@ import ApiClient from '../ApiClient';
  * @version v1.0.0
  */
 export default class GroupAddRequest {
-    /**
-     * Constructs a new <code>GroupAddRequest</code>.
-     * @alias module:model/GroupAddRequest
-     * @class
-     */
+  /**
+   * @member {String} name
+   */
+  name = undefined;
+  /**
+   * @member {String} description
+   */
+  description = undefined;
+  /**
+   * @member {Boolean} public
+   */
+  public = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>GroupAddRequest</code>.
+   * @alias module:model/GroupAddRequest
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>GroupAddRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/GroupAddRequest} obj Optional instance to populate.
+   * @return {module:model/GroupAddRequest} The populated <code>GroupAddRequest</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new GroupAddRequest();
+
+
+      if (data.hasOwnProperty("name")) {
+        obj["name"] = ApiClient.convertToType(data["name"], "String");
+      }
+      if (data.hasOwnProperty("description")) {
+        obj["description"] = ApiClient.convertToType(data["description"], "String");
+      }
+      if (data.hasOwnProperty("public")) {
+        obj["public"] = ApiClient.convertToType(data["public"], "Boolean");
+      }
     }
-
-    /**
-     * Constructs a <code>GroupAddRequest</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GroupAddRequest} obj Optional instance to populate.
-     * @return {module:model/GroupAddRequest} The populated <code>GroupAddRequest</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new GroupAddRequest();
-
-
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('description')) {
-                obj['description'] = ApiClient.convertToType(data['description'], 'String');
-            }
-            if (data.hasOwnProperty('public')) {
-                obj['public'] = ApiClient.convertToType(data['public'], 'Boolean');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {String} name
-     */
-    name = undefined;
-    /**
-     * @member {String} description
-     */
-    description = undefined;
-    /**
-     * @member {Boolean} public
-     */
-    public = undefined;
+    return obj;
+  }
 
 
 }

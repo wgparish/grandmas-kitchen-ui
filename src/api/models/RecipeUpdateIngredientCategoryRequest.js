@@ -11,8 +11,8 @@
  *
  */
 
-import ApiClient from '../ApiClient';
-import RecipeUpdateIngredientRequest from './RecipeUpdateIngredientRequest';
+import ApiClient from "../ApiClient";
+import RecipeUpdateIngredientRequest from "./RecipeUpdateIngredientRequest";
 
 /**
  * The RecipeUpdateIngredientCategoryRequest model module.
@@ -20,75 +20,75 @@ import RecipeUpdateIngredientRequest from './RecipeUpdateIngredientRequest';
  * @version v1.0.0
  */
 export default class RecipeUpdateIngredientCategoryRequest {
-    /**
-     * Constructs a new <code>RecipeUpdateIngredientCategoryRequest</code>.
-     * @alias module:model/RecipeUpdateIngredientCategoryRequest
-     * @class
-     */
+  /**
+   * @member {Number} id
+   */
+  id = undefined;
+  /**
+   * @member {Number} sequenceNumber
+   */
+  sequenceNumber = undefined;
+  /**
+   * @member {String} name
+   */
+  name = undefined;
+  /**
+   * @member {Array.<module:model/RecipeUpdateIngredientRequest>} ingredientList
+   */
+  ingredientList = undefined;
+  /**
+   * @member {Boolean} active
+   */
+  active = undefined;
+  /**
+   * @member {Boolean} new
+   */
+  new = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>RecipeUpdateIngredientCategoryRequest</code>.
+   * @alias module:model/RecipeUpdateIngredientCategoryRequest
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>RecipeUpdateIngredientCategoryRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/RecipeUpdateIngredientCategoryRequest} obj Optional instance to populate.
+   * @return {module:model/RecipeUpdateIngredientCategoryRequest} The populated <code>RecipeUpdateIngredientCategoryRequest</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new RecipeUpdateIngredientCategoryRequest();
+
+
+      if (data.hasOwnProperty("id")) {
+        obj["id"] = ApiClient.convertToType(data["id"], "Number");
+      }
+      if (data.hasOwnProperty("sequenceNumber")) {
+        obj["sequenceNumber"] = ApiClient.convertToType(data["sequenceNumber"], "Number");
+      }
+      if (data.hasOwnProperty("name")) {
+        obj["name"] = ApiClient.convertToType(data["name"], "String");
+      }
+      if (data.hasOwnProperty("ingredientList")) {
+        obj["ingredientList"] = ApiClient.convertToType(data["ingredientList"], [RecipeUpdateIngredientRequest]);
+      }
+      if (data.hasOwnProperty("active")) {
+        obj["active"] = ApiClient.convertToType(data["active"], "Boolean");
+      }
+      if (data.hasOwnProperty("new")) {
+        obj["new"] = ApiClient.convertToType(data["new"], "Boolean");
+      }
     }
-
-    /**
-     * Constructs a <code>RecipeUpdateIngredientCategoryRequest</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/RecipeUpdateIngredientCategoryRequest} obj Optional instance to populate.
-     * @return {module:model/RecipeUpdateIngredientCategoryRequest} The populated <code>RecipeUpdateIngredientCategoryRequest</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new RecipeUpdateIngredientCategoryRequest();
-
-
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
-            }
-            if (data.hasOwnProperty('sequenceNumber')) {
-                obj['sequenceNumber'] = ApiClient.convertToType(data['sequenceNumber'], 'Number');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('ingredientList')) {
-                obj['ingredientList'] = ApiClient.convertToType(data['ingredientList'], [RecipeUpdateIngredientRequest]);
-            }
-            if (data.hasOwnProperty('active')) {
-                obj['active'] = ApiClient.convertToType(data['active'], 'Boolean');
-            }
-            if (data.hasOwnProperty('new')) {
-                obj['new'] = ApiClient.convertToType(data['new'], 'Boolean');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {Number} id
-     */
-    id = undefined;
-    /**
-     * @member {Number} sequenceNumber
-     */
-    sequenceNumber = undefined;
-    /**
-     * @member {String} name
-     */
-    name = undefined;
-    /**
-     * @member {Array.<module:model/RecipeUpdateIngredientRequest>} ingredientList
-     */
-    ingredientList = undefined;
-    /**
-     * @member {Boolean} active
-     */
-    active = undefined;
-    /**
-     * @member {Boolean} new
-     */
-    new = undefined;
+    return obj;
+  }
 
 
 }

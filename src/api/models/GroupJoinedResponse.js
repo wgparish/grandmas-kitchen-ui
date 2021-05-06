@@ -11,7 +11,7 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+import ApiClient from "../ApiClient";
 
 /**
  * The GroupJoinedResponse model module.
@@ -19,106 +19,104 @@ import ApiClient from '../ApiClient';
  * @version v1.0.0
  */
 export default class GroupJoinedResponse {
+  /**
+   * Allowed values for the <code>permissionType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  static PermissionTypeEnum = {
     /**
-     * Constructs a new <code>GroupJoinedResponse</code>.
-     * @alias module:model/GroupJoinedResponse
-     * @class
+     * value: "OWNER"
+     * @const
      */
+    "OWNER": "OWNER",
+    /**
+     * value: "ADMIN"
+     * @const
+     */
+    "ADMIN": "ADMIN",
+    /**
+     * value: "MODERATOR"
+     * @const
+     */
+    "MODERATOR": "MODERATOR",
+    /**
+     * value: "WRITER"
+     * @const
+     */
+    "WRITER": "WRITER",
+    /**
+     * value: "READER"
+     * @const
+     */
+    "READER": "READER",
+    /**
+     * value: "NONE"
+     * @const
+     */
+    "NONE": "NONE"
+  };
+  /**
+   * @member {Number} id
+   */
+  id = undefined;
+  /**
+   * @member {String} name
+   */
+  name = undefined;
+  /**
+   * @member {String} description
+   */
+  description = undefined;
+  /**
+   * @member {module:model/GroupJoinedResponse.PermissionTypeEnum} permissionType
+   */
+  permissionType = undefined;
+  /**
+   * @member {Boolean} favorite
+   */
+  favorite = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>GroupJoinedResponse</code>.
+   * @alias module:model/GroupJoinedResponse
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>GroupJoinedResponse</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/GroupJoinedResponse} obj Optional instance to populate.
+   * @return {module:model/GroupJoinedResponse} The populated <code>GroupJoinedResponse</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new GroupJoinedResponse();
+
+
+      if (data.hasOwnProperty("id")) {
+        obj["id"] = ApiClient.convertToType(data["id"], "Number");
+      }
+      if (data.hasOwnProperty("name")) {
+        obj["name"] = ApiClient.convertToType(data["name"], "String");
+      }
+      if (data.hasOwnProperty("description")) {
+        obj["description"] = ApiClient.convertToType(data["description"], "String");
+      }
+      if (data.hasOwnProperty("permissionType")) {
+        obj["permissionType"] = ApiClient.convertToType(data["permissionType"], "String");
+      }
+      if (data.hasOwnProperty("favorite")) {
+        obj["favorite"] = ApiClient.convertToType(data["favorite"], "Boolean");
+      }
     }
-
-    /**
-     * Constructs a <code>GroupJoinedResponse</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GroupJoinedResponse} obj Optional instance to populate.
-     * @return {module:model/GroupJoinedResponse} The populated <code>GroupJoinedResponse</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new GroupJoinedResponse();
-
-
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('description')) {
-                obj['description'] = ApiClient.convertToType(data['description'], 'String');
-            }
-            if (data.hasOwnProperty('permissionType')) {
-                obj['permissionType'] = ApiClient.convertToType(data['permissionType'], 'String');
-            }
-            if (data.hasOwnProperty('favorite')) {
-                obj['favorite'] = ApiClient.convertToType(data['favorite'], 'Boolean');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {Number} id
-     */
-    id = undefined;
-    /**
-     * @member {String} name
-     */
-    name = undefined;
-    /**
-     * @member {String} description
-     */
-    description = undefined;
-    /**
-     * @member {module:model/GroupJoinedResponse.PermissionTypeEnum} permissionType
-     */
-    permissionType = undefined;
-    /**
-     * @member {Boolean} favorite
-     */
-    favorite = undefined;
-
-
-    /**
-     * Allowed values for the <code>permissionType</code> property.
-     * @enum {String}
-     * @readonly
-     */
-    static PermissionTypeEnum = {
-        /**
-         * value: "OWNER"
-         * @const
-         */
-        "OWNER": "OWNER",
-        /**
-         * value: "ADMIN"
-         * @const
-         */
-        "ADMIN": "ADMIN",
-        /**
-         * value: "MODERATOR"
-         * @const
-         */
-        "MODERATOR": "MODERATOR",
-        /**
-         * value: "WRITER"
-         * @const
-         */
-        "WRITER": "WRITER",
-        /**
-         * value: "READER"
-         * @const
-         */
-        "READER": "READER",
-        /**
-         * value: "NONE"
-         * @const
-         */
-        "NONE": "NONE"
-    };
+    return obj;
+  }
 
 }

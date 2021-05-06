@@ -11,7 +11,7 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+import ApiClient from "../ApiClient";
 
 /**
  * The RecipeAddHardwareRequest model module.
@@ -19,40 +19,40 @@ import ApiClient from '../ApiClient';
  * @version v1.0.0
  */
 export default class RecipeAddHardwareRequest {
-    /**
-     * Constructs a new <code>RecipeAddHardwareRequest</code>.
-     * @alias module:model/RecipeAddHardwareRequest
-     * @class
-     */
+  /**
+   * @member {String} hardwareName
+   */
+  hardwareName = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>RecipeAddHardwareRequest</code>.
+   * @alias module:model/RecipeAddHardwareRequest
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>RecipeAddHardwareRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/RecipeAddHardwareRequest} obj Optional instance to populate.
+   * @return {module:model/RecipeAddHardwareRequest} The populated <code>RecipeAddHardwareRequest</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new RecipeAddHardwareRequest();
+
+
+      if (data.hasOwnProperty("hardwareName")) {
+        obj["hardwareName"] = ApiClient.convertToType(data["hardwareName"], "String");
+      }
     }
-
-    /**
-     * Constructs a <code>RecipeAddHardwareRequest</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/RecipeAddHardwareRequest} obj Optional instance to populate.
-     * @return {module:model/RecipeAddHardwareRequest} The populated <code>RecipeAddHardwareRequest</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new RecipeAddHardwareRequest();
-
-
-            if (data.hasOwnProperty('hardwareName')) {
-                obj['hardwareName'] = ApiClient.convertToType(data['hardwareName'], 'String');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {String} hardwareName
-     */
-    hardwareName = undefined;
+    return obj;
+  }
 
 
 }

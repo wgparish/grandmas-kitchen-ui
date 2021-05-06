@@ -11,7 +11,7 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+import ApiClient from "../ApiClient";
 
 /**
  * The RecipeIngredientResponse model module.
@@ -19,75 +19,75 @@ import ApiClient from '../ApiClient';
  * @version v1.0.0
  */
 export default class RecipeIngredientResponse {
-    /**
-     * Constructs a new <code>RecipeIngredientResponse</code>.
-     * @alias module:model/RecipeIngredientResponse
-     * @class
-     */
+  /**
+   * @member {Number} id
+   */
+  id = undefined;
+  /**
+   * @member {Number} sequenceNumber
+   */
+  sequenceNumber = undefined;
+  /**
+   * @member {String} quantity
+   */
+  quantity = undefined;
+  /**
+   * @member {String} unit
+   */
+  unit = undefined;
+  /**
+   * @member {String} name
+   */
+  name = undefined;
+  /**
+   * @member {Boolean} optional
+   */
+  optional = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>RecipeIngredientResponse</code>.
+   * @alias module:model/RecipeIngredientResponse
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>RecipeIngredientResponse</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/RecipeIngredientResponse} obj Optional instance to populate.
+   * @return {module:model/RecipeIngredientResponse} The populated <code>RecipeIngredientResponse</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new RecipeIngredientResponse();
+
+
+      if (data.hasOwnProperty("id")) {
+        obj["id"] = ApiClient.convertToType(data["id"], "Number");
+      }
+      if (data.hasOwnProperty("sequenceNumber")) {
+        obj["sequenceNumber"] = ApiClient.convertToType(data["sequenceNumber"], "Number");
+      }
+      if (data.hasOwnProperty("quantity")) {
+        obj["quantity"] = ApiClient.convertToType(data["quantity"], "String");
+      }
+      if (data.hasOwnProperty("unit")) {
+        obj["unit"] = ApiClient.convertToType(data["unit"], "String");
+      }
+      if (data.hasOwnProperty("name")) {
+        obj["name"] = ApiClient.convertToType(data["name"], "String");
+      }
+      if (data.hasOwnProperty("optional")) {
+        obj["optional"] = ApiClient.convertToType(data["optional"], "Boolean");
+      }
     }
-
-    /**
-     * Constructs a <code>RecipeIngredientResponse</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/RecipeIngredientResponse} obj Optional instance to populate.
-     * @return {module:model/RecipeIngredientResponse} The populated <code>RecipeIngredientResponse</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new RecipeIngredientResponse();
-
-
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
-            }
-            if (data.hasOwnProperty('sequenceNumber')) {
-                obj['sequenceNumber'] = ApiClient.convertToType(data['sequenceNumber'], 'Number');
-            }
-            if (data.hasOwnProperty('quantity')) {
-                obj['quantity'] = ApiClient.convertToType(data['quantity'], 'String');
-            }
-            if (data.hasOwnProperty('unit')) {
-                obj['unit'] = ApiClient.convertToType(data['unit'], 'String');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('optional')) {
-                obj['optional'] = ApiClient.convertToType(data['optional'], 'Boolean');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {Number} id
-     */
-    id = undefined;
-    /**
-     * @member {Number} sequenceNumber
-     */
-    sequenceNumber = undefined;
-    /**
-     * @member {String} quantity
-     */
-    quantity = undefined;
-    /**
-     * @member {String} unit
-     */
-    unit = undefined;
-    /**
-     * @member {String} name
-     */
-    name = undefined;
-    /**
-     * @member {Boolean} optional
-     */
-    optional = undefined;
+    return obj;
+  }
 
 
 }

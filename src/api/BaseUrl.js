@@ -21,6 +21,6 @@
  *     > once that image id is obtained, then the image can be downloaded from the general images endpoint using the image id as a parameter
  */
 
-const apiBaseURL = "http://192.168.1.2:8080";
+const apiBaseURL = "http://localhost:8080/";
 
 export default apiBaseURL;

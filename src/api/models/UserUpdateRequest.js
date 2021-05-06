@@ -11,7 +11,7 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+import ApiClient from "../ApiClient";
 
 /**
  * The UserUpdateRequest model module.
@@ -19,68 +19,68 @@ import ApiClient from '../ApiClient';
  * @version v1.0.0
  */
 export default class UserUpdateRequest {
-    /**
-     * Constructs a new <code>UserUpdateRequest</code>.
-     * @alias module:model/UserUpdateRequest
-     * @class
-     */
+  /**
+   * @member {String} currentPassword
+   */
+  currentPassword = undefined;
+  /**
+   * @member {String} newPassword
+   */
+  newPassword = undefined;
+  /**
+   * @member {String} firstName
+   */
+  firstName = undefined;
+  /**
+   * @member {String} lastName
+   */
+  lastName = undefined;
+  /**
+   * @member {String} email
+   */
+  email = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>UserUpdateRequest</code>.
+   * @alias module:model/UserUpdateRequest
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>UserUpdateRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/UserUpdateRequest} obj Optional instance to populate.
+   * @return {module:model/UserUpdateRequest} The populated <code>UserUpdateRequest</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new UserUpdateRequest();
+
+
+      if (data.hasOwnProperty("currentPassword")) {
+        obj["currentPassword"] = ApiClient.convertToType(data["currentPassword"], "String");
+      }
+      if (data.hasOwnProperty("newPassword")) {
+        obj["newPassword"] = ApiClient.convertToType(data["newPassword"], "String");
+      }
+      if (data.hasOwnProperty("firstName")) {
+        obj["firstName"] = ApiClient.convertToType(data["firstName"], "String");
+      }
+      if (data.hasOwnProperty("lastName")) {
+        obj["lastName"] = ApiClient.convertToType(data["lastName"], "String");
+      }
+      if (data.hasOwnProperty("email")) {
+        obj["email"] = ApiClient.convertToType(data["email"], "String");
+      }
     }
-
-    /**
-     * Constructs a <code>UserUpdateRequest</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/UserUpdateRequest} obj Optional instance to populate.
-     * @return {module:model/UserUpdateRequest} The populated <code>UserUpdateRequest</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new UserUpdateRequest();
-
-
-            if (data.hasOwnProperty('currentPassword')) {
-                obj['currentPassword'] = ApiClient.convertToType(data['currentPassword'], 'String');
-            }
-            if (data.hasOwnProperty('newPassword')) {
-                obj['newPassword'] = ApiClient.convertToType(data['newPassword'], 'String');
-            }
-            if (data.hasOwnProperty('firstName')) {
-                obj['firstName'] = ApiClient.convertToType(data['firstName'], 'String');
-            }
-            if (data.hasOwnProperty('lastName')) {
-                obj['lastName'] = ApiClient.convertToType(data['lastName'], 'String');
-            }
-            if (data.hasOwnProperty('email')) {
-                obj['email'] = ApiClient.convertToType(data['email'], 'String');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {String} currentPassword
-     */
-    currentPassword = undefined;
-    /**
-     * @member {String} newPassword
-     */
-    newPassword = undefined;
-    /**
-     * @member {String} firstName
-     */
-    firstName = undefined;
-    /**
-     * @member {String} lastName
-     */
-    lastName = undefined;
-    /**
-     * @member {String} email
-     */
-    email = undefined;
+    return obj;
+  }
 
 
 }

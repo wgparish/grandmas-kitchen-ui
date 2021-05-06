@@ -11,8 +11,8 @@
  *
  */
 
-import ApiClient from '../ApiClient';
-import RecipeAddIngredientRequest from './RecipeAddIngredientRequest';
+import ApiClient from "../ApiClient";
+import RecipeAddIngredientRequest from "./RecipeAddIngredientRequest";
 
 /**
  * The RecipeAddIngredientCategoryRequest model module.
@@ -20,54 +20,54 @@ import RecipeAddIngredientRequest from './RecipeAddIngredientRequest';
  * @version v1.0.0
  */
 export default class RecipeAddIngredientCategoryRequest {
-    /**
-     * Constructs a new <code>RecipeAddIngredientCategoryRequest</code>.
-     * @alias module:model/RecipeAddIngredientCategoryRequest
-     * @class
-     */
+  /**
+   * @member {Number} sequenceNumber
+   */
+  sequenceNumber = undefined;
+  /**
+   * @member {String} name
+   */
+  name = undefined;
+  /**
+   * @member {Array.<module:model/RecipeAddIngredientRequest>} ingredientList
+   */
+  ingredientList = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>RecipeAddIngredientCategoryRequest</code>.
+   * @alias module:model/RecipeAddIngredientCategoryRequest
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>RecipeAddIngredientCategoryRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/RecipeAddIngredientCategoryRequest} obj Optional instance to populate.
+   * @return {module:model/RecipeAddIngredientCategoryRequest} The populated <code>RecipeAddIngredientCategoryRequest</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new RecipeAddIngredientCategoryRequest();
+
+
+      if (data.hasOwnProperty("sequenceNumber")) {
+        obj["sequenceNumber"] = ApiClient.convertToType(data["sequenceNumber"], "Number");
+      }
+      if (data.hasOwnProperty("name")) {
+        obj["name"] = ApiClient.convertToType(data["name"], "String");
+      }
+      if (data.hasOwnProperty("ingredientList")) {
+        obj["ingredientList"] = ApiClient.convertToType(data["ingredientList"], [RecipeAddIngredientRequest]);
+      }
     }
-
-    /**
-     * Constructs a <code>RecipeAddIngredientCategoryRequest</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/RecipeAddIngredientCategoryRequest} obj Optional instance to populate.
-     * @return {module:model/RecipeAddIngredientCategoryRequest} The populated <code>RecipeAddIngredientCategoryRequest</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new RecipeAddIngredientCategoryRequest();
-
-
-            if (data.hasOwnProperty('sequenceNumber')) {
-                obj['sequenceNumber'] = ApiClient.convertToType(data['sequenceNumber'], 'Number');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('ingredientList')) {
-                obj['ingredientList'] = ApiClient.convertToType(data['ingredientList'], [RecipeAddIngredientRequest]);
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {Number} sequenceNumber
-     */
-    sequenceNumber = undefined;
-    /**
-     * @member {String} name
-     */
-    name = undefined;
-    /**
-     * @member {Array.<module:model/RecipeAddIngredientRequest>} ingredientList
-     */
-    ingredientList = undefined;
+    return obj;
+  }
 
 
 }

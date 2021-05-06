@@ -11,7 +11,7 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+import ApiClient from "../ApiClient";
 
 /**
  * The ContactUsEmailRequest model module.
@@ -19,61 +19,61 @@ import ApiClient from '../ApiClient';
  * @version v1.0.0
  */
 export default class ContactUsEmailRequest {
-    /**
-     * Constructs a new <code>ContactUsEmailRequest</code>.
-     * @alias module:model/ContactUsEmailRequest
-     * @class
-     */
+  /**
+   * @member {String} name
+   */
+  name = undefined;
+  /**
+   * @member {String} email
+   */
+  email = undefined;
+  /**
+   * @member {String} phoneNum
+   */
+  phoneNum = undefined;
+  /**
+   * @member {String} message
+   */
+  message = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>ContactUsEmailRequest</code>.
+   * @alias module:model/ContactUsEmailRequest
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>ContactUsEmailRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/ContactUsEmailRequest} obj Optional instance to populate.
+   * @return {module:model/ContactUsEmailRequest} The populated <code>ContactUsEmailRequest</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new ContactUsEmailRequest();
+
+
+      if (data.hasOwnProperty("name")) {
+        obj["name"] = ApiClient.convertToType(data["name"], "String");
+      }
+      if (data.hasOwnProperty("email")) {
+        obj["email"] = ApiClient.convertToType(data["email"], "String");
+      }
+      if (data.hasOwnProperty("phoneNum")) {
+        obj["phoneNum"] = ApiClient.convertToType(data["phoneNum"], "String");
+      }
+      if (data.hasOwnProperty("message")) {
+        obj["message"] = ApiClient.convertToType(data["message"], "String");
+      }
     }
-
-    /**
-     * Constructs a <code>ContactUsEmailRequest</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/ContactUsEmailRequest} obj Optional instance to populate.
-     * @return {module:model/ContactUsEmailRequest} The populated <code>ContactUsEmailRequest</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new ContactUsEmailRequest();
-
-
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('email')) {
-                obj['email'] = ApiClient.convertToType(data['email'], 'String');
-            }
-            if (data.hasOwnProperty('phoneNum')) {
-                obj['phoneNum'] = ApiClient.convertToType(data['phoneNum'], 'String');
-            }
-            if (data.hasOwnProperty('message')) {
-                obj['message'] = ApiClient.convertToType(data['message'], 'String');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {String} name
-     */
-    name = undefined;
-    /**
-     * @member {String} email
-     */
-    email = undefined;
-    /**
-     * @member {String} phoneNum
-     */
-    phoneNum = undefined;
-    /**
-     * @member {String} message
-     */
-    message = undefined;
+    return obj;
+  }
 
 
 }

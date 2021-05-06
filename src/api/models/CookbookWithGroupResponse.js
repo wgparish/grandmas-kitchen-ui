@@ -11,7 +11,7 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+import ApiClient from "../ApiClient";
 
 /**
  * The CookbookWithGroupResponse model module.
@@ -19,61 +19,61 @@ import ApiClient from '../ApiClient';
  * @version v1.0.0
  */
 export default class CookbookWithGroupResponse {
-    /**
-     * Constructs a new <code>CookbookWithGroupResponse</code>.
-     * @alias module:model/CookbookWithGroupResponse
-     * @class
-     */
+  /**
+   * @member {Number} id
+   */
+  id = undefined;
+  /**
+   * @member {Number} groupId
+   */
+  groupId = undefined;
+  /**
+   * @member {String} name
+   */
+  name = undefined;
+  /**
+   * @member {String} description
+   */
+  description = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>CookbookWithGroupResponse</code>.
+   * @alias module:model/CookbookWithGroupResponse
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>CookbookWithGroupResponse</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/CookbookWithGroupResponse} obj Optional instance to populate.
+   * @return {module:model/CookbookWithGroupResponse} The populated <code>CookbookWithGroupResponse</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new CookbookWithGroupResponse();
+
+
+      if (data.hasOwnProperty("id")) {
+        obj["id"] = ApiClient.convertToType(data["id"], "Number");
+      }
+      if (data.hasOwnProperty("groupId")) {
+        obj["groupId"] = ApiClient.convertToType(data["groupId"], "Number");
+      }
+      if (data.hasOwnProperty("name")) {
+        obj["name"] = ApiClient.convertToType(data["name"], "String");
+      }
+      if (data.hasOwnProperty("description")) {
+        obj["description"] = ApiClient.convertToType(data["description"], "String");
+      }
     }
-
-    /**
-     * Constructs a <code>CookbookWithGroupResponse</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/CookbookWithGroupResponse} obj Optional instance to populate.
-     * @return {module:model/CookbookWithGroupResponse} The populated <code>CookbookWithGroupResponse</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new CookbookWithGroupResponse();
-
-
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
-            }
-            if (data.hasOwnProperty('groupId')) {
-                obj['groupId'] = ApiClient.convertToType(data['groupId'], 'Number');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('description')) {
-                obj['description'] = ApiClient.convertToType(data['description'], 'String');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {Number} id
-     */
-    id = undefined;
-    /**
-     * @member {Number} groupId
-     */
-    groupId = undefined;
-    /**
-     * @member {String} name
-     */
-    name = undefined;
-    /**
-     * @member {String} description
-     */
-    description = undefined;
+    return obj;
+  }
 
 
 }

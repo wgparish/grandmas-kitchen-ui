@@ -11,7 +11,7 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+import ApiClient from "../ApiClient";
 
 /**
  * The UserResponse model module.
@@ -19,68 +19,68 @@ import ApiClient from '../ApiClient';
  * @version v1.0.0
  */
 export default class UserResponse {
-    /**
-     * Constructs a new <code>UserResponse</code>.
-     * @alias module:model/UserResponse
-     * @class
-     */
+  /**
+   * @member {Number} id
+   */
+  id = undefined;
+  /**
+   * @member {String} email
+   */
+  email = undefined;
+  /**
+   * @member {String} firstName
+   */
+  firstName = undefined;
+  /**
+   * @member {String} lastName
+   */
+  lastName = undefined;
+  /**
+   * @member {Boolean} active
+   */
+  active = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>UserResponse</code>.
+   * @alias module:model/UserResponse
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>UserResponse</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/UserResponse} obj Optional instance to populate.
+   * @return {module:model/UserResponse} The populated <code>UserResponse</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new UserResponse();
+
+
+      if (data.hasOwnProperty("id")) {
+        obj["id"] = ApiClient.convertToType(data["id"], "Number");
+      }
+      if (data.hasOwnProperty("email")) {
+        obj["email"] = ApiClient.convertToType(data["email"], "String");
+      }
+      if (data.hasOwnProperty("firstName")) {
+        obj["firstName"] = ApiClient.convertToType(data["firstName"], "String");
+      }
+      if (data.hasOwnProperty("lastName")) {
+        obj["lastName"] = ApiClient.convertToType(data["lastName"], "String");
+      }
+      if (data.hasOwnProperty("active")) {
+        obj["active"] = ApiClient.convertToType(data["active"], "Boolean");
+      }
     }
-
-    /**
-     * Constructs a <code>UserResponse</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/UserResponse} obj Optional instance to populate.
-     * @return {module:model/UserResponse} The populated <code>UserResponse</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new UserResponse();
-
-
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
-            }
-            if (data.hasOwnProperty('email')) {
-                obj['email'] = ApiClient.convertToType(data['email'], 'String');
-            }
-            if (data.hasOwnProperty('firstName')) {
-                obj['firstName'] = ApiClient.convertToType(data['firstName'], 'String');
-            }
-            if (data.hasOwnProperty('lastName')) {
-                obj['lastName'] = ApiClient.convertToType(data['lastName'], 'String');
-            }
-            if (data.hasOwnProperty('active')) {
-                obj['active'] = ApiClient.convertToType(data['active'], 'Boolean');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {Number} id
-     */
-    id = undefined;
-    /**
-     * @member {String} email
-     */
-    email = undefined;
-    /**
-     * @member {String} firstName
-     */
-    firstName = undefined;
-    /**
-     * @member {String} lastName
-     */
-    lastName = undefined;
-    /**
-     * @member {Boolean} active
-     */
-    active = undefined;
+    return obj;
+  }
 
 
 }

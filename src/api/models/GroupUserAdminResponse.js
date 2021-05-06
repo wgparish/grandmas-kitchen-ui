@@ -11,7 +11,7 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+import ApiClient from "../ApiClient";
 
 /**
  * The GroupUserAdminResponse model module.
@@ -19,171 +19,169 @@ import ApiClient from '../ApiClient';
  * @version v1.0.0
  */
 export default class GroupUserAdminResponse {
+  /**
+   * Allowed values for the <code>permissionType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  static PermissionTypeEnum = {
     /**
-     * Constructs a new <code>GroupUserAdminResponse</code>.
-     * @alias module:model/GroupUserAdminResponse
-     * @class
+     * value: "OWNER"
+     * @const
      */
+    "OWNER": "OWNER",
+    /**
+     * value: "ADMIN"
+     * @const
+     */
+    "ADMIN": "ADMIN",
+    /**
+     * value: "MODERATOR"
+     * @const
+     */
+    "MODERATOR": "MODERATOR",
+    /**
+     * value: "WRITER"
+     * @const
+     */
+    "WRITER": "WRITER",
+    /**
+     * value: "READER"
+     * @const
+     */
+    "READER": "READER",
+    /**
+     * value: "NONE"
+     * @const
+     */
+    "NONE": "NONE"
+  };
+  /**
+   * Allowed values for the <code>requestingPermissionType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  static RequestingPermissionTypeEnum = {
+    /**
+     * value: "OWNER"
+     * @const
+     */
+    "OWNER": "OWNER",
+    /**
+     * value: "ADMIN"
+     * @const
+     */
+    "ADMIN": "ADMIN",
+    /**
+     * value: "MODERATOR"
+     * @const
+     */
+    "MODERATOR": "MODERATOR",
+    /**
+     * value: "WRITER"
+     * @const
+     */
+    "WRITER": "WRITER",
+    /**
+     * value: "READER"
+     * @const
+     */
+    "READER": "READER",
+    /**
+     * value: "NONE"
+     * @const
+     */
+    "NONE": "NONE"
+  };
+  /**
+   * @member {Number} userId
+   */
+  userId = undefined;
+  /**
+   * @member {String} firstName
+   */
+  firstName = undefined;
+  /**
+   * @member {String} lastName
+   */
+  lastName = undefined;
+  /**
+   * @member {String} email
+   */
+  email = undefined;
+  /**
+   * @member {module:model/GroupUserAdminResponse.PermissionTypeEnum} permissionType
+   */
+  permissionType = undefined;
+  /**
+   * @member {module:model/GroupUserAdminResponse.RequestingPermissionTypeEnum} requestingPermissionType
+   */
+  requestingPermissionType = undefined;
+  /**
+   * @member {Boolean} active
+   */
+  active = undefined;
+  /**
+   * @member {Boolean} pending
+   */
+  pending = undefined;
+  /**
+   * @member {Boolean} requesting
+   */
+  requesting = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>GroupUserAdminResponse</code>.
+   * @alias module:model/GroupUserAdminResponse
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>GroupUserAdminResponse</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/GroupUserAdminResponse} obj Optional instance to populate.
+   * @return {module:model/GroupUserAdminResponse} The populated <code>GroupUserAdminResponse</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new GroupUserAdminResponse();
+
+
+      if (data.hasOwnProperty("userId")) {
+        obj["userId"] = ApiClient.convertToType(data["userId"], "Number");
+      }
+      if (data.hasOwnProperty("firstName")) {
+        obj["firstName"] = ApiClient.convertToType(data["firstName"], "String");
+      }
+      if (data.hasOwnProperty("lastName")) {
+        obj["lastName"] = ApiClient.convertToType(data["lastName"], "String");
+      }
+      if (data.hasOwnProperty("email")) {
+        obj["email"] = ApiClient.convertToType(data["email"], "String");
+      }
+      if (data.hasOwnProperty("permissionType")) {
+        obj["permissionType"] = ApiClient.convertToType(data["permissionType"], "String");
+      }
+      if (data.hasOwnProperty("requestingPermissionType")) {
+        obj["requestingPermissionType"] = ApiClient.convertToType(data["requestingPermissionType"], "String");
+      }
+      if (data.hasOwnProperty("active")) {
+        obj["active"] = ApiClient.convertToType(data["active"], "Boolean");
+      }
+      if (data.hasOwnProperty("pending")) {
+        obj["pending"] = ApiClient.convertToType(data["pending"], "Boolean");
+      }
+      if (data.hasOwnProperty("requesting")) {
+        obj["requesting"] = ApiClient.convertToType(data["requesting"], "Boolean");
+      }
     }
-
-    /**
-     * Constructs a <code>GroupUserAdminResponse</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GroupUserAdminResponse} obj Optional instance to populate.
-     * @return {module:model/GroupUserAdminResponse} The populated <code>GroupUserAdminResponse</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new GroupUserAdminResponse();
-
-
-            if (data.hasOwnProperty('userId')) {
-                obj['userId'] = ApiClient.convertToType(data['userId'], 'Number');
-            }
-            if (data.hasOwnProperty('firstName')) {
-                obj['firstName'] = ApiClient.convertToType(data['firstName'], 'String');
-            }
-            if (data.hasOwnProperty('lastName')) {
-                obj['lastName'] = ApiClient.convertToType(data['lastName'], 'String');
-            }
-            if (data.hasOwnProperty('email')) {
-                obj['email'] = ApiClient.convertToType(data['email'], 'String');
-            }
-            if (data.hasOwnProperty('permissionType')) {
-                obj['permissionType'] = ApiClient.convertToType(data['permissionType'], 'String');
-            }
-            if (data.hasOwnProperty('requestingPermissionType')) {
-                obj['requestingPermissionType'] = ApiClient.convertToType(data['requestingPermissionType'], 'String');
-            }
-            if (data.hasOwnProperty('active')) {
-                obj['active'] = ApiClient.convertToType(data['active'], 'Boolean');
-            }
-            if (data.hasOwnProperty('pending')) {
-                obj['pending'] = ApiClient.convertToType(data['pending'], 'Boolean');
-            }
-            if (data.hasOwnProperty('requesting')) {
-                obj['requesting'] = ApiClient.convertToType(data['requesting'], 'Boolean');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {Number} userId
-     */
-    userId = undefined;
-    /**
-     * @member {String} firstName
-     */
-    firstName = undefined;
-    /**
-     * @member {String} lastName
-     */
-    lastName = undefined;
-    /**
-     * @member {String} email
-     */
-    email = undefined;
-    /**
-     * @member {module:model/GroupUserAdminResponse.PermissionTypeEnum} permissionType
-     */
-    permissionType = undefined;
-    /**
-     * @member {module:model/GroupUserAdminResponse.RequestingPermissionTypeEnum} requestingPermissionType
-     */
-    requestingPermissionType = undefined;
-    /**
-     * @member {Boolean} active
-     */
-    active = undefined;
-    /**
-     * @member {Boolean} pending
-     */
-    pending = undefined;
-    /**
-     * @member {Boolean} requesting
-     */
-    requesting = undefined;
-
-
-    /**
-     * Allowed values for the <code>permissionType</code> property.
-     * @enum {String}
-     * @readonly
-     */
-    static PermissionTypeEnum = {
-        /**
-         * value: "OWNER"
-         * @const
-         */
-        "OWNER": "OWNER",
-        /**
-         * value: "ADMIN"
-         * @const
-         */
-        "ADMIN": "ADMIN",
-        /**
-         * value: "MODERATOR"
-         * @const
-         */
-        "MODERATOR": "MODERATOR",
-        /**
-         * value: "WRITER"
-         * @const
-         */
-        "WRITER": "WRITER",
-        /**
-         * value: "READER"
-         * @const
-         */
-        "READER": "READER",
-        /**
-         * value: "NONE"
-         * @const
-         */
-        "NONE": "NONE"
-    };
-    /**
-     * Allowed values for the <code>requestingPermissionType</code> property.
-     * @enum {String}
-     * @readonly
-     */
-    static RequestingPermissionTypeEnum = {
-        /**
-         * value: "OWNER"
-         * @const
-         */
-        "OWNER": "OWNER",
-        /**
-         * value: "ADMIN"
-         * @const
-         */
-        "ADMIN": "ADMIN",
-        /**
-         * value: "MODERATOR"
-         * @const
-         */
-        "MODERATOR": "MODERATOR",
-        /**
-         * value: "WRITER"
-         * @const
-         */
-        "WRITER": "WRITER",
-        /**
-         * value: "READER"
-         * @const
-         */
-        "READER": "READER",
-        /**
-         * value: "NONE"
-         * @const
-         */
-        "NONE": "NONE"
-    };
+    return obj;
+  }
 
 }

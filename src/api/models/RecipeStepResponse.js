@@ -11,7 +11,7 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+import ApiClient from "../ApiClient";
 
 /**
  * The RecipeStepResponse model module.
@@ -19,68 +19,68 @@ import ApiClient from '../ApiClient';
  * @version v1.0.0
  */
 export default class RecipeStepResponse {
-    /**
-     * Constructs a new <code>RecipeStepResponse</code>.
-     * @alias module:model/RecipeStepResponse
-     * @class
-     */
+  /**
+   * @member {Number} id
+   */
+  id = undefined;
+  /**
+   * @member {Number} sequenceNumber
+   */
+  sequenceNumber = undefined;
+  /**
+   * @member {String} description
+   */
+  description = undefined;
+  /**
+   * @member {String} title
+   */
+  title = undefined;
+  /**
+   * @member {Boolean} active
+   */
+  active = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>RecipeStepResponse</code>.
+   * @alias module:model/RecipeStepResponse
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>RecipeStepResponse</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/RecipeStepResponse} obj Optional instance to populate.
+   * @return {module:model/RecipeStepResponse} The populated <code>RecipeStepResponse</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new RecipeStepResponse();
+
+
+      if (data.hasOwnProperty("id")) {
+        obj["id"] = ApiClient.convertToType(data["id"], "Number");
+      }
+      if (data.hasOwnProperty("sequenceNumber")) {
+        obj["sequenceNumber"] = ApiClient.convertToType(data["sequenceNumber"], "Number");
+      }
+      if (data.hasOwnProperty("description")) {
+        obj["description"] = ApiClient.convertToType(data["description"], "String");
+      }
+      if (data.hasOwnProperty("title")) {
+        obj["title"] = ApiClient.convertToType(data["title"], "String");
+      }
+      if (data.hasOwnProperty("active")) {
+        obj["active"] = ApiClient.convertToType(data["active"], "Boolean");
+      }
     }
-
-    /**
-     * Constructs a <code>RecipeStepResponse</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/RecipeStepResponse} obj Optional instance to populate.
-     * @return {module:model/RecipeStepResponse} The populated <code>RecipeStepResponse</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new RecipeStepResponse();
-
-
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
-            }
-            if (data.hasOwnProperty('sequenceNumber')) {
-                obj['sequenceNumber'] = ApiClient.convertToType(data['sequenceNumber'], 'Number');
-            }
-            if (data.hasOwnProperty('description')) {
-                obj['description'] = ApiClient.convertToType(data['description'], 'String');
-            }
-            if (data.hasOwnProperty('title')) {
-                obj['title'] = ApiClient.convertToType(data['title'], 'String');
-            }
-            if (data.hasOwnProperty('active')) {
-                obj['active'] = ApiClient.convertToType(data['active'], 'Boolean');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {Number} id
-     */
-    id = undefined;
-    /**
-     * @member {Number} sequenceNumber
-     */
-    sequenceNumber = undefined;
-    /**
-     * @member {String} description
-     */
-    description = undefined;
-    /**
-     * @member {String} title
-     */
-    title = undefined;
-    /**
-     * @member {Boolean} active
-     */
-    active = undefined;
+    return obj;
+  }
 
 
 }

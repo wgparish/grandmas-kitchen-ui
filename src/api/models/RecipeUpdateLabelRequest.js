@@ -11,7 +11,7 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+import ApiClient from "../ApiClient";
 
 /**
  * The RecipeUpdateLabelRequest model module.
@@ -19,91 +19,89 @@ import ApiClient from '../ApiClient';
  * @version v1.0.0
  */
 export default class RecipeUpdateLabelRequest {
+  /**
+   * Allowed values for the <code>recipeType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  static RecipeTypeEnum = {
     /**
-     * Constructs a new <code>RecipeUpdateLabelRequest</code>.
-     * @alias module:model/RecipeUpdateLabelRequest
-     * @class
+     * value: "RecipeType.FOOD(value=Food)"
+     * @const
      */
+    "FOOD(value&#x3D;Food)": "RecipeType.FOOD(value=Food)",
+    /**
+     * value: "RecipeType.DRINK(value=Drink)"
+     * @const
+     */
+    "DRINK(value&#x3D;Drink)": "RecipeType.DRINK(value=Drink)",
+    /**
+     * value: "RecipeType.PET(value=Pet)"
+     * @const
+     */
+    "PET(value&#x3D;Pet)": "RecipeType.PET(value=Pet)"
+  };
+  /**
+   * @member {Number} id
+   */
+  id = undefined;
+  /**
+   * @member {String} labelText
+   */
+  labelText = undefined;
+  /**
+   * @member {module:model/RecipeUpdateLabelRequest.RecipeTypeEnum} recipeType
+   */
+  recipeType = undefined;
+  /**
+   * @member {Boolean} active
+   */
+  active = undefined;
+  /**
+   * @member {Boolean} new
+   */
+  new = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>RecipeUpdateLabelRequest</code>.
+   * @alias module:model/RecipeUpdateLabelRequest
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>RecipeUpdateLabelRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/RecipeUpdateLabelRequest} obj Optional instance to populate.
+   * @return {module:model/RecipeUpdateLabelRequest} The populated <code>RecipeUpdateLabelRequest</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new RecipeUpdateLabelRequest();
+
+
+      if (data.hasOwnProperty("id")) {
+        obj["id"] = ApiClient.convertToType(data["id"], "Number");
+      }
+      if (data.hasOwnProperty("labelText")) {
+        obj["labelText"] = ApiClient.convertToType(data["labelText"], "String");
+      }
+      if (data.hasOwnProperty("recipeType")) {
+        obj["recipeType"] = ApiClient.convertToType(data["recipeType"], "String");
+      }
+      if (data.hasOwnProperty("active")) {
+        obj["active"] = ApiClient.convertToType(data["active"], "Boolean");
+      }
+      if (data.hasOwnProperty("new")) {
+        obj["new"] = ApiClient.convertToType(data["new"], "Boolean");
+      }
     }
-
-    /**
-     * Constructs a <code>RecipeUpdateLabelRequest</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/RecipeUpdateLabelRequest} obj Optional instance to populate.
-     * @return {module:model/RecipeUpdateLabelRequest} The populated <code>RecipeUpdateLabelRequest</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new RecipeUpdateLabelRequest();
-
-
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
-            }
-            if (data.hasOwnProperty('labelText')) {
-                obj['labelText'] = ApiClient.convertToType(data['labelText'], 'String');
-            }
-            if (data.hasOwnProperty('recipeType')) {
-                obj['recipeType'] = ApiClient.convertToType(data['recipeType'], 'String');
-            }
-            if (data.hasOwnProperty('active')) {
-                obj['active'] = ApiClient.convertToType(data['active'], 'Boolean');
-            }
-            if (data.hasOwnProperty('new')) {
-                obj['new'] = ApiClient.convertToType(data['new'], 'Boolean');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {Number} id
-     */
-    id = undefined;
-    /**
-     * @member {String} labelText
-     */
-    labelText = undefined;
-    /**
-     * @member {module:model/RecipeUpdateLabelRequest.RecipeTypeEnum} recipeType
-     */
-    recipeType = undefined;
-    /**
-     * @member {Boolean} active
-     */
-    active = undefined;
-    /**
-     * @member {Boolean} new
-     */
-    new = undefined;
-
-
-    /**
-     * Allowed values for the <code>recipeType</code> property.
-     * @enum {String}
-     * @readonly
-     */
-    static RecipeTypeEnum = {
-        /**
-         * value: "RecipeType.FOOD(value=Food)"
-         * @const
-         */
-        "FOOD(value&#x3D;Food)": "RecipeType.FOOD(value=Food)",
-        /**
-         * value: "RecipeType.DRINK(value=Drink)"
-         * @const
-         */
-        "DRINK(value&#x3D;Drink)": "RecipeType.DRINK(value=Drink)",
-        /**
-         * value: "RecipeType.PET(value=Pet)"
-         * @const
-         */
-        "PET(value&#x3D;Pet)": "RecipeType.PET(value=Pet)"
-    };
+    return obj;
+  }
 
 }

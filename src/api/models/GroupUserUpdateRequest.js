@@ -11,7 +11,7 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+import ApiClient from "../ApiClient";
 
 /**
  * The GroupUserUpdateRequest model module.
@@ -19,99 +19,97 @@ import ApiClient from '../ApiClient';
  * @version v1.0.0
  */
 export default class GroupUserUpdateRequest {
+  /**
+   * Allowed values for the <code>permissionType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  static PermissionTypeEnum = {
     /**
-     * Constructs a new <code>GroupUserUpdateRequest</code>.
-     * @alias module:model/GroupUserUpdateRequest
-     * @class
+     * value: "OWNER"
+     * @const
      */
+    "OWNER": "OWNER",
+    /**
+     * value: "ADMIN"
+     * @const
+     */
+    "ADMIN": "ADMIN",
+    /**
+     * value: "MODERATOR"
+     * @const
+     */
+    "MODERATOR": "MODERATOR",
+    /**
+     * value: "WRITER"
+     * @const
+     */
+    "WRITER": "WRITER",
+    /**
+     * value: "READER"
+     * @const
+     */
+    "READER": "READER",
+    /**
+     * value: "NONE"
+     * @const
+     */
+    "NONE": "NONE"
+  };
+  /**
+   * @member {Number} groupId
+   */
+  groupId = undefined;
+  /**
+   * @member {Number} userId
+   */
+  userId = undefined;
+  /**
+   * @member {Boolean} active
+   */
+  active = undefined;
+  /**
+   * @member {module:model/GroupUserUpdateRequest.PermissionTypeEnum} permissionType
+   */
+  permissionType = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>GroupUserUpdateRequest</code>.
+   * @alias module:model/GroupUserUpdateRequest
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>GroupUserUpdateRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/GroupUserUpdateRequest} obj Optional instance to populate.
+   * @return {module:model/GroupUserUpdateRequest} The populated <code>GroupUserUpdateRequest</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new GroupUserUpdateRequest();
+
+
+      if (data.hasOwnProperty("groupId")) {
+        obj["groupId"] = ApiClient.convertToType(data["groupId"], "Number");
+      }
+      if (data.hasOwnProperty("userId")) {
+        obj["userId"] = ApiClient.convertToType(data["userId"], "Number");
+      }
+      if (data.hasOwnProperty("active")) {
+        obj["active"] = ApiClient.convertToType(data["active"], "Boolean");
+      }
+      if (data.hasOwnProperty("permissionType")) {
+        obj["permissionType"] = ApiClient.convertToType(data["permissionType"], "String");
+      }
     }
-
-    /**
-     * Constructs a <code>GroupUserUpdateRequest</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/GroupUserUpdateRequest} obj Optional instance to populate.
-     * @return {module:model/GroupUserUpdateRequest} The populated <code>GroupUserUpdateRequest</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new GroupUserUpdateRequest();
-
-
-            if (data.hasOwnProperty('groupId')) {
-                obj['groupId'] = ApiClient.convertToType(data['groupId'], 'Number');
-            }
-            if (data.hasOwnProperty('userId')) {
-                obj['userId'] = ApiClient.convertToType(data['userId'], 'Number');
-            }
-            if (data.hasOwnProperty('active')) {
-                obj['active'] = ApiClient.convertToType(data['active'], 'Boolean');
-            }
-            if (data.hasOwnProperty('permissionType')) {
-                obj['permissionType'] = ApiClient.convertToType(data['permissionType'], 'String');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {Number} groupId
-     */
-    groupId = undefined;
-    /**
-     * @member {Number} userId
-     */
-    userId = undefined;
-    /**
-     * @member {Boolean} active
-     */
-    active = undefined;
-    /**
-     * @member {module:model/GroupUserUpdateRequest.PermissionTypeEnum} permissionType
-     */
-    permissionType = undefined;
-
-
-    /**
-     * Allowed values for the <code>permissionType</code> property.
-     * @enum {String}
-     * @readonly
-     */
-    static PermissionTypeEnum = {
-        /**
-         * value: "OWNER"
-         * @const
-         */
-        "OWNER": "OWNER",
-        /**
-         * value: "ADMIN"
-         * @const
-         */
-        "ADMIN": "ADMIN",
-        /**
-         * value: "MODERATOR"
-         * @const
-         */
-        "MODERATOR": "MODERATOR",
-        /**
-         * value: "WRITER"
-         * @const
-         */
-        "WRITER": "WRITER",
-        /**
-         * value: "READER"
-         * @const
-         */
-        "READER": "READER",
-        /**
-         * value: "NONE"
-         * @const
-         */
-        "NONE": "NONE"
-    };
+    return obj;
+  }
 
 }

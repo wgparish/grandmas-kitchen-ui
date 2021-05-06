@@ -11,7 +11,7 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+import ApiClient from "../ApiClient";
 
 /**
  * The RecipeUpdateHardwareRequest model module.
@@ -19,61 +19,61 @@ import ApiClient from '../ApiClient';
  * @version v1.0.0
  */
 export default class RecipeUpdateHardwareRequest {
-    /**
-     * Constructs a new <code>RecipeUpdateHardwareRequest</code>.
-     * @alias module:model/RecipeUpdateHardwareRequest
-     * @class
-     */
+  /**
+   * @member {Number} id
+   */
+  id = undefined;
+  /**
+   * @member {String} hardwareName
+   */
+  hardwareName = undefined;
+  /**
+   * @member {Boolean} active
+   */
+  active = undefined;
+  /**
+   * @member {Boolean} new
+   */
+  new = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>RecipeUpdateHardwareRequest</code>.
+   * @alias module:model/RecipeUpdateHardwareRequest
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>RecipeUpdateHardwareRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/RecipeUpdateHardwareRequest} obj Optional instance to populate.
+   * @return {module:model/RecipeUpdateHardwareRequest} The populated <code>RecipeUpdateHardwareRequest</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new RecipeUpdateHardwareRequest();
+
+
+      if (data.hasOwnProperty("id")) {
+        obj["id"] = ApiClient.convertToType(data["id"], "Number");
+      }
+      if (data.hasOwnProperty("hardwareName")) {
+        obj["hardwareName"] = ApiClient.convertToType(data["hardwareName"], "String");
+      }
+      if (data.hasOwnProperty("active")) {
+        obj["active"] = ApiClient.convertToType(data["active"], "Boolean");
+      }
+      if (data.hasOwnProperty("new")) {
+        obj["new"] = ApiClient.convertToType(data["new"], "Boolean");
+      }
     }
-
-    /**
-     * Constructs a <code>RecipeUpdateHardwareRequest</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/RecipeUpdateHardwareRequest} obj Optional instance to populate.
-     * @return {module:model/RecipeUpdateHardwareRequest} The populated <code>RecipeUpdateHardwareRequest</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new RecipeUpdateHardwareRequest();
-
-
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
-            }
-            if (data.hasOwnProperty('hardwareName')) {
-                obj['hardwareName'] = ApiClient.convertToType(data['hardwareName'], 'String');
-            }
-            if (data.hasOwnProperty('active')) {
-                obj['active'] = ApiClient.convertToType(data['active'], 'Boolean');
-            }
-            if (data.hasOwnProperty('new')) {
-                obj['new'] = ApiClient.convertToType(data['new'], 'Boolean');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {Number} id
-     */
-    id = undefined;
-    /**
-     * @member {String} hardwareName
-     */
-    hardwareName = undefined;
-    /**
-     * @member {Boolean} active
-     */
-    active = undefined;
-    /**
-     * @member {Boolean} new
-     */
-    new = undefined;
+    return obj;
+  }
 
 
 }

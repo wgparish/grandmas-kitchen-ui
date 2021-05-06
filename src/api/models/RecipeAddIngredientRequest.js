@@ -11,7 +11,7 @@
  *
  */
 
-import ApiClient from '../ApiClient';
+import ApiClient from "../ApiClient";
 
 /**
  * The RecipeAddIngredientRequest model module.
@@ -19,68 +19,68 @@ import ApiClient from '../ApiClient';
  * @version v1.0.0
  */
 export default class RecipeAddIngredientRequest {
-    /**
-     * Constructs a new <code>RecipeAddIngredientRequest</code>.
-     * @alias module:model/RecipeAddIngredientRequest
-     * @class
-     */
+  /**
+   * @member {Number} sequenceNumber
+   */
+  sequenceNumber = undefined;
+  /**
+   * @member {String} quantity
+   */
+  quantity = undefined;
+  /**
+   * @member {String} unit
+   */
+  unit = undefined;
+  /**
+   * @member {String} name
+   */
+  name = undefined;
+  /**
+   * @member {Boolean} optional
+   */
+  optional = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>RecipeAddIngredientRequest</code>.
+   * @alias module:model/RecipeAddIngredientRequest
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>RecipeAddIngredientRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/RecipeAddIngredientRequest} obj Optional instance to populate.
+   * @return {module:model/RecipeAddIngredientRequest} The populated <code>RecipeAddIngredientRequest</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new RecipeAddIngredientRequest();
+
+
+      if (data.hasOwnProperty("sequenceNumber")) {
+        obj["sequenceNumber"] = ApiClient.convertToType(data["sequenceNumber"], "Number");
+      }
+      if (data.hasOwnProperty("quantity")) {
+        obj["quantity"] = ApiClient.convertToType(data["quantity"], "String");
+      }
+      if (data.hasOwnProperty("unit")) {
+        obj["unit"] = ApiClient.convertToType(data["unit"], "String");
+      }
+      if (data.hasOwnProperty("name")) {
+        obj["name"] = ApiClient.convertToType(data["name"], "String");
+      }
+      if (data.hasOwnProperty("optional")) {
+        obj["optional"] = ApiClient.convertToType(data["optional"], "Boolean");
+      }
     }
-
-    /**
-     * Constructs a <code>RecipeAddIngredientRequest</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/RecipeAddIngredientRequest} obj Optional instance to populate.
-     * @return {module:model/RecipeAddIngredientRequest} The populated <code>RecipeAddIngredientRequest</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new RecipeAddIngredientRequest();
-
-
-            if (data.hasOwnProperty('sequenceNumber')) {
-                obj['sequenceNumber'] = ApiClient.convertToType(data['sequenceNumber'], 'Number');
-            }
-            if (data.hasOwnProperty('quantity')) {
-                obj['quantity'] = ApiClient.convertToType(data['quantity'], 'String');
-            }
-            if (data.hasOwnProperty('unit')) {
-                obj['unit'] = ApiClient.convertToType(data['unit'], 'String');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('optional')) {
-                obj['optional'] = ApiClient.convertToType(data['optional'], 'Boolean');
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {Number} sequenceNumber
-     */
-    sequenceNumber = undefined;
-    /**
-     * @member {String} quantity
-     */
-    quantity = undefined;
-    /**
-     * @member {String} unit
-     */
-    unit = undefined;
-    /**
-     * @member {String} name
-     */
-    name = undefined;
-    /**
-     * @member {Boolean} optional
-     */
-    optional = undefined;
+    return obj;
+  }
 
 
 }

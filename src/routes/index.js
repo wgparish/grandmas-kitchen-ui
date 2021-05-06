@@ -7,20 +7,20 @@ import RegisterPage from "../views/RegisterPage/RegisterPage";
 import ForgotPasswordPage from "../views/ForgotPasswordPage/ForgotPasswordPage";
 import ProfilePage from "../views/ProfilePage/ProfilePage";
 import GroupPage from "../views/GroupPage/GroupPage";
+import CreateGroupPage from "../views/CreateGroupPage/CreateGroupPage";
 
 let indexRoutes = [
-    {path: "/login", name: "LoginPage", component: LoginPage},
-    {path: "/logout", name: "Logout", component: LogoutPage},
-    {path: "/contact", name: "ContactUsPage", component: ContactUsPage},
-    {path: "/about", name: "AboutUsPage", component: AboutUsPage},
-    {path: "/register", name: "RegisterPage", component: RegisterPage},
-    {path: "/forgot-password", name: "ForgotPasswordPage", component: ForgotPasswordPage},
-    {path: "/account", name: "ProfilePage", component: ProfilePage},
-    {path: "/group", name: "GroupPage", component: GroupPage},
+  { path: "/login", name: "LoginPage", component: LoginPage },
+  { path: "/logout", name: "Logout", component: LogoutPage },
+  { path: "/contact", name: "ContactUsPage", component: ContactUsPage },
+  { path: "/about", name: "AboutUsPage", component: AboutUsPage },
+  { path: "/register", name: "RegisterPage", component: RegisterPage },
+  { path: "/forgot-password", name: "ForgotPasswordPage", component: ForgotPasswordPage },
+  { path: "/account", name: "ProfilePage", component: ProfilePage },
+  { path: "/group", name: "GroupPage", component: GroupPage },
+  { path: "/create-group", name: "CreateGroupPage", component: CreateGroupPage },
 
-
-
-    {path: "/", name: "HomePage", component: HomePage}
+  { path: "/", name: "HomePage", component: HomePage }
 
 ];
 

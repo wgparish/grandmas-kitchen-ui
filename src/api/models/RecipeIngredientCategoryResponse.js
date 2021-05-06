@@ -11,8 +11,8 @@
  *
  */
 
-import ApiClient from '../ApiClient';
-import RecipeIngredientResponse from './RecipeIngredientResponse';
+import ApiClient from "../ApiClient";
+import RecipeIngredientResponse from "./RecipeIngredientResponse";
 
 /**
  * The RecipeIngredientCategoryResponse model module.
@@ -20,68 +20,68 @@ import RecipeIngredientResponse from './RecipeIngredientResponse';
  * @version v1.0.0
  */
 export default class RecipeIngredientCategoryResponse {
-    /**
-     * Constructs a new <code>RecipeIngredientCategoryResponse</code>.
-     * @alias module:model/RecipeIngredientCategoryResponse
-     * @class
-     */
+  /**
+   * @member {Number} id
+   */
+  id = undefined;
+  /**
+   * @member {Number} sequenceNumber
+   */
+  sequenceNumber = undefined;
+  /**
+   * @member {String} name
+   */
+  name = undefined;
+  /**
+   * @member {Boolean} active
+   */
+  active = undefined;
+  /**
+   * @member {Array.<module:model/RecipeIngredientResponse>} ingredientList
+   */
+  ingredientList = undefined;
 
-    constructor() {
+  /**
+   * Constructs a new <code>RecipeIngredientCategoryResponse</code>.
+   * @alias module:model/RecipeIngredientCategoryResponse
+   * @class
+   */
+
+  constructor() {
 
 
+  }
+
+  /**
+   * Constructs a <code>RecipeIngredientCategoryResponse</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/RecipeIngredientCategoryResponse} obj Optional instance to populate.
+   * @return {module:model/RecipeIngredientCategoryResponse} The populated <code>RecipeIngredientCategoryResponse</code> instance.
+   */
+  static constructFromObject(data, obj) {
+    if (data) {
+      obj = obj || new RecipeIngredientCategoryResponse();
+
+
+      if (data.hasOwnProperty("id")) {
+        obj["id"] = ApiClient.convertToType(data["id"], "Number");
+      }
+      if (data.hasOwnProperty("sequenceNumber")) {
+        obj["sequenceNumber"] = ApiClient.convertToType(data["sequenceNumber"], "Number");
+      }
+      if (data.hasOwnProperty("name")) {
+        obj["name"] = ApiClient.convertToType(data["name"], "String");
+      }
+      if (data.hasOwnProperty("active")) {
+        obj["active"] = ApiClient.convertToType(data["active"], "Boolean");
+      }
+      if (data.hasOwnProperty("ingredientList")) {
+        obj["ingredientList"] = ApiClient.convertToType(data["ingredientList"], [RecipeIngredientResponse]);
+      }
     }
-
-    /**
-     * Constructs a <code>RecipeIngredientCategoryResponse</code> from a plain JavaScript object, optionally creating a new instance.
-     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-     * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/RecipeIngredientCategoryResponse} obj Optional instance to populate.
-     * @return {module:model/RecipeIngredientCategoryResponse} The populated <code>RecipeIngredientCategoryResponse</code> instance.
-     */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new RecipeIngredientCategoryResponse();
-
-
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
-            }
-            if (data.hasOwnProperty('sequenceNumber')) {
-                obj['sequenceNumber'] = ApiClient.convertToType(data['sequenceNumber'], 'Number');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('active')) {
-                obj['active'] = ApiClient.convertToType(data['active'], 'Boolean');
-            }
-            if (data.hasOwnProperty('ingredientList')) {
-                obj['ingredientList'] = ApiClient.convertToType(data['ingredientList'], [RecipeIngredientResponse]);
-            }
-        }
-        return obj;
-    }
-
-    /**
-     * @member {Number} id
-     */
-    id = undefined;
-    /**
-     * @member {Number} sequenceNumber
-     */
-    sequenceNumber = undefined;
-    /**
-     * @member {String} name
-     */
-    name = undefined;
-    /**
-     * @member {Boolean} active
-     */
-    active = undefined;
-    /**
-     * @member {Array.<module:model/RecipeIngredientResponse>} ingredientList
-     */
-    ingredientList = undefined;
+    return obj;
+  }
 
 
 }
