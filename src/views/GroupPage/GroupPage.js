@@ -126,6 +126,16 @@ class GroupPage extends React.Component {
                           <CardHeader plain>
                             <h3>{group.name}</h3>
                           </CardHeader>
+                          <CardBody>
+                            <div
+                              style={{
+                                display: "flex",
+                                justifyContent: "center"
+                              }}
+                            >
+                              <p>{group.description}</p>
+                            </div>
+                          </CardBody>
                         </Card>
                       </GridItem>
                     );

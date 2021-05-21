@@ -15,28 +15,13 @@ import CardBody from "../../components/Card/CardBody";
 import CustomInput from "../../components/CustomInput/CustomInput";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import { Chat } from "@material-ui/icons";
-import { purple } from "@material-ui/core/colors";
 import CardFooter from "../../components/Card/CardFooter";
 import Button from "../../components/CustomButtons/Button";
 import PageFooter from "../../components/Footer/PageFooter";
-import { Redirect, Switch } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import GroupController from "../../api/GroupController";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-
-const PurpleSwitch = withStyles({
-  switchBase: {
-    color: purple[300],
-    "&$checked": {
-      color: purple[500]
-    },
-    "&$checked + $track": {
-      backgroundColor: purple[500]
-    }
-  },
-  checked: {},
-  track: {}
-})(Switch);
 
 class CreateGroupPage extends React.Component {
   constructor(props) {
@@ -46,11 +31,11 @@ class CreateGroupPage extends React.Component {
       cardAnimation: "",
       errorText: null,
       processing: false,
-      userLoggedIn: false,
       groupName: "",
       groupDescription: "",
       groupIsPublic: false,
-      imageId: null
+      imageId: null,
+      createdGroup: false
     };
     initializeGA();
   }
@@ -69,19 +54,15 @@ class CreateGroupPage extends React.Component {
 
   createGroup() {
     //If you want to add a login-wait animation/change then do so below
-    let email = this.state.email;
-    let password = this.state.password;
-    let firstName = this.state.firstName;
-    let lastName = this.state.lastName;
-
     let name = this.state.groupName;
-    let description = this.state.groupDescription;
+    let groupDescription = this.state.groupDescription;
     let isPublic = this.state.groupIsPublic;
-    GroupController.groupAdd({
+    let groupAddRequest = {
       name: name,
-      description: description,
+      description: groupDescription,
       public: isPublic
-    })
+    };
+    GroupController.groupAdd(groupAddRequest)
       .then(response => this.handleGroupAddServerSuccessResponse(response))
       .catch(error => this.handleGroupAddServerError(error));
   }
@@ -121,13 +102,13 @@ class CreateGroupPage extends React.Component {
     });
     console.log(response);
 
-    this.setState({ userLoggedIn: true });
+    this.setState({ createdGroup: true });
   }
 
   render() {
     const { classes, ...rest } = this.props;
 
-    if (!this.state.userLoggedIn) {
+    if (!this.state.createdGroup) {
       return (
         <div>
           <Header
@@ -188,7 +169,7 @@ class CreateGroupPage extends React.Component {
                           />
                           <CustomInput
                             labelText="Description..."
-                            id="description"
+                            id="groupDescription"
                             type="textarea"
                             formControlProps={{
                               fullWidth: true,
@@ -197,10 +178,10 @@ class CreateGroupPage extends React.Component {
                                   evt.target === null ||
                                   evt.target.value === null
                                 ) {
-                                  this.setState({ description: "" });
+                                  this.setState({ groupDescription: "" });
                                 } else {
                                   this.setState({
-                                    description: evt.target.value
+                                    groupDescription: evt.target.value
                                   });
                                 }
                               }
@@ -256,7 +237,7 @@ class CreateGroupPage extends React.Component {
         </div>
       );
     } else {
-      return <Redirect to="/login" />;
+      return <Redirect to="/group" />;
     }
   }
 }
