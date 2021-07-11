@@ -117,6 +117,10 @@ const componentsStyle = {
     },
     fullHeight: {
         height: "100%",
+    },
+    cardLink: {
+        color: "inherit",
+        textDecoration: "none"
     }
 
 };

@@ -2,26 +2,25 @@ import Header from "../../components/Header/Header";
 import HeaderLinks from "../../components/Header/HeaderLinks";
 import Parallax from "../../components/Parallax/Parallax";
 import StaticImageCarousel from "../../components/ImageCarousel/StaticImageCarousel";
-import classNames from "classnames";
 import PageFooter from "../../components/Footer/PageFooter";
 import React from "react";
 import UserController from "../../api/UserController";
-import GridContainer from "../../components/Grid/GridContainer";
-import GridItem from "../../components/Grid/GridItem";
-import CardHeader from "../../components/Card/CardHeader";
-import Button from "../../components/CustomButtons/Button";
-import { NavLink } from "react-router-dom";
 import componentsStyle from "../../assets/jss/material-kit-pro-react/views/componentsStyle";
 import withStyles from "@material-ui/core/styles/withStyles";
 import GroupController from "../../api/GroupController";
-import Card from "../../components/Card/Card";
-import { Add } from "@material-ui/icons";
-import IconButton from "@material-ui/core/IconButton";
-import CardBody from "../../components/Card/CardBody";
+import classNames from "classnames";
+import GridContainer from "../../components/Grid/GridContainer";
+import GridItem from "../../components/Grid/GridItem";
+import CardHeader from "../../components/Card/CardHeader";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { Link } from "react-router-dom";
-
-class GroupPage extends React.Component {
+import Card from "../../components/Card/Card";
+import CardBody from "../../components/Card/CardBody";
+import { Link, NavLink } from "react-router-dom";
+import IconButton from "@material-ui/core/IconButton";
+import { Add } from "@material-ui/icons";
+import Button from "../../components/CustomButtons/Button";
+import CookbookController from "../../api/CookbookController";
+class GroupViewPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -30,23 +29,39 @@ class GroupPage extends React.Component {
       isLoaded: false,
       imageIds: null,
       pageContent: "",
-      groupList: []
+      groupInfo: {},
+      cookBookList: []
     };
 
-    this.loadGroupList();
+    this.loadGroupInfo();
+    this.loadCookBookList();
     this.loadUserInformation();
   }
 
   componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
+    console.log(this.props.match.params.groupId);
   }
 
-  loadGroupList() {
-    GroupController.groupList()
+  loadGroupInfo() {
+    GroupController.groupView(this.props.match.params.groupId)
+      .then(response => {
+        console.log("GROUP INFO: ");
+        console.log(response.data);
+        this.setState({
+          groupInfo: response.data,
+          isLoaded: true
+        });
+      })
+      .catch(err => console.log("Something done fucked up." + err));
+  }
+
+  loadCookBookList() {
+    CookbookController.cookbookList(this.props.match.params.groupId)
       .then(response => {
         this.setState({
-          groupList: response.data,
+          cookBookList: response.data,
           isLoaded: true
         });
       })
@@ -97,14 +112,15 @@ class GroupPage extends React.Component {
               <GridContainer>
                 <GridItem xs={12} sm={5}>
                   <CardHeader color="danger" className={classes.cardHeader}>
-                    <h2>Groups</h2>
+                    <h2>{this.state.groupInfo.name}</h2>
+                    <h4>{this.state.groupInfo.description}</h4>
                   </CardHeader>
                 </GridItem>
                 <GridItem xs={12} sm={4} />
               </GridContainer>
               <p>
                 <br />
-                Your Groups are listed below
+                Your Cookbooks are listed below
                 <br />
                 <br />
               </p>
@@ -119,13 +135,21 @@ class GroupPage extends React.Component {
                 )}
                 {this.state.userLoggedIn &&
                   this.state.isLoaded &&
-                  this.state.groupList.map(group => {
+                  this.state.cookBookList.map(cookbook => {
                     return (
                       <GridItem xs={12} sm={12} md={4} lg={4}>
                         <Card danger color="danger">
-                          <Link to={"/" + group.id} className={classes.cardLink}>
+                          <Link
+                            to={
+                              "/" +
+                              this.props.match.params.groupId +
+                              "/" +
+                              cookbook.id
+                            }
+                            className={classes.cardLink}
+                          >
                             <CardHeader plain>
-                              <h3>{group.name}</h3>
+                              <h3>{cookbook.name}</h3>
                             </CardHeader>
                             <CardBody>
                               <div
@@ -134,7 +158,7 @@ class GroupPage extends React.Component {
                                   justifyContent: "center"
                                 }}
                               >
-                                <p>{group.description}</p>
+                                <p>{cookbook.description}</p>
                               </div>
                             </CardBody>
                           </Link>
@@ -149,11 +173,13 @@ class GroupPage extends React.Component {
                         <div
                           style={{ display: "flex", justifyContent: "center" }}
                         >
-                          <Link to={"/create-group"}>
+                          <Link
+                            to={"/create-cookbook/" + this.state.groupInfo.id}
+                          >
                             <IconButton
-                              to={"/create-group"}
+                              to={"/create-cookbook/" + this.state.groupInfo.id}
                               color="info"
-                              aria-label={"Create Group"}
+                              aria-label={"Create cookbook"}
                             >
                               <Add fontSize="large" />
                             </IconButton>
@@ -182,4 +208,4 @@ class GroupPage extends React.Component {
   }
 }
 
-export default withStyles(componentsStyle)(GroupPage);
+export default withStyles(componentsStyle)(GroupViewPage);
