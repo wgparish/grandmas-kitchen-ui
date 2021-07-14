@@ -15,6 +15,11 @@ import CardFooter from "../../../components/Card/CardFooter";
 import Button from "../../../components/CustomButtons/Button";
 import PageFooter from "../../../components/Footer/PageFooter";
 import { Redirect } from "react-router-dom";
+import Wizard from "../../../components/Wizard/Wizard";
+import RecipeGenericInformation from "./CreateRecipeWizardSteps/RecipeGenericInformation";
+import RecipeHardwareList from "./CreateRecipeWizardSteps/RecipeHardwareList";
+import RecipeIngredientList from "./CreateRecipeWizardSteps/RecipeIngredientList";
+import RecipeStepList from "./CreateRecipeWizardSteps/RecipeStepList";
 
 class CreateRecipePage extends React.Component {
   constructor(props) {
@@ -36,12 +41,6 @@ class CreateRecipePage extends React.Component {
     // we add a hidden class to the card and after 700 ms we delete it and the transition appears
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
-    setTimeout(
-      function() {
-        this.setState({ cardAnimation: "" });
-      }.bind(this),
-      700
-    );
   }
 
   createRecipe() {
@@ -121,41 +120,41 @@ class CreateRecipePage extends React.Component {
           >
             <div className={classes.container}>
               <GridContainer justify="center">
-                <GridItem xs={12} sm={8} md={7}>
-                  <Fade in={true}>
-                    <Card className={classes[this.state.cardAnimation]}>
-                      <form
-                        className={classes.form}
-                        onSubmit={e => {
-                          e.preventDefault();
-                          this.createCookbook();
-                        }}
-                      >
-                        <CardHeader
-                          color="danger"
-                          className={classes.cardHeader}
-                        >
-                          <h4>Create New Recipe</h4>
-                        </CardHeader>
-                        <p className={classes.divider}>
-                          Please fill out the below information
-                        </p>
-                        <CardBody>
-                        </CardBody>
-                        <CardFooter className={classes.cardFooter}>
-                          <Button
-                            type={"submit"}
-                            simple
-                            color="danger"
-                            size="lg"
-                          >
-                            Create Recipe
-                          </Button>
-                        </CardFooter>
-                      </form>
-                    </Card>
-                  </Fade>
-                </GridItem>
+                <Fade in={true}>
+                  <GridItem xs={12} sm={12} md={9}>
+                    <Wizard
+                      validate
+                      color={"danger"}
+                      steps={[
+                        {
+                          stepName: "General",
+                          stepComponent: RecipeGenericInformation,
+                          stepId: "general"
+                        },
+                        {
+                          stepName: "Equipment",
+                          stepComponent: RecipeHardwareList,
+                          stepId: "hardware"
+                        },
+                        {
+                          stepName: "Ingredients",
+                          stepComponent: RecipeIngredientList,
+                          stepId: "ingredients"
+                        },
+                        {
+                          stepName: "Steps",
+                          stepComponent: RecipeStepList,
+                          stepId: "steps"
+                        }
+                      ]}
+                      title="Create Your Recipe"
+                      subtitle="This information will be all about your recipe."
+                      finishButtonClick={allStates => {
+                        this.handleFinishedButtonClick(allStates);
+                      }}
+                    />
+                  </GridItem>
+                </Fade>
               </GridContainer>
             </div>
           </div>
@@ -163,7 +162,16 @@ class CreateRecipePage extends React.Component {
         </div>
       );
     } else {
-      return <Redirect to={"/" + this.props.match.params.groupId + "/" + this.props.match.params.cookBookId} />;
+      return (
+        <Redirect
+          to={
+            "/" +
+            this.props.match.params.groupId +
+            "/" +
+            this.props.match.params.cookBookId
+          }
+        />
+      );
     }
   }
 }

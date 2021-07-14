@@ -34,21 +34,19 @@ class Wizard extends React.Component {
       }
     }
 
+
+
     let stepIndex = 0;
-    if (typeof defaultStepName !== "undefined" && defaultStepName !== null) {
-      for (let step = 0; step < this.props.steps.length; step++) {
-        if (this.props.steps[step].stepName === defaultStepName) {
+    if(typeof defaultStepName !== "undefined" && defaultStepName !== null) {
+      for(let step = 0; step < this.props.steps.length; step++) {
+        if(this.props.steps[step].stepName === defaultStepName) {
           stepIndex = step;
           break;
         }
       }
     }
 
-    if (
-      typeof this.props.isCheckout !== "undefined"
-        ? this.props.isCheckout
-        : false
-    ) {
+    if(typeof this.props.isCheckout !== 'undefined' ? this.props.isCheckout : false){
       console.log("Is Checkout Wizard");
       console.log("Account: ", this.props.account);
       this.props.steps[0].account = this.props.account;
@@ -57,33 +55,19 @@ class Wizard extends React.Component {
     this.state = {
       currentStep: stepIndex, //0 by default, unless a "starting page" was specified
       color: this.props.color,
-      nextButton:
-        this.props.steps.length > 1 && stepIndex < this.props.steps.length - 1, //show next button if more than 1 step exists AND *not* starting on the last page
+      nextButton: this.props.steps.length > 1 && stepIndex < this.props.steps.length-1, //show next button if more than 1 step exists AND *not* starting on the last page
       previousButton: stepIndex > 0, //if *not* starting on the first step, show the previous button
-      finishButton:
-        this.props.steps.length === 1 ||
-        stepIndex === this.props.steps.length - 1, //show "finish" button if only 1 page exists OR we are starting on the last page
+      finishButton: this.props.steps.length === 1 || stepIndex === this.props.steps.length-1, //show "finish" button if only 1 page exists OR we are starting on the last page
       width: width,
       movingTabStyle: {
         transition: "transform 0s"
       },
       allStates: {},
-      ignoreValidation:
-        typeof this.props.ignoreValidation !== "undefined"
-          ? this.props.ignoreValidation
-          : false,
-      apiKey:
-        typeof this.props.apiKey !== "undefined" ? this.props.apiKey : null,
-      account:
-        typeof this.props.account !== "undefined" ? this.props.account : null,
-      isCheckout:
-        typeof this.props.isCheckout !== "undefined"
-          ? this.props.isCheckout
-          : false,
-      subscription:
-        typeof this.props.subscription !== "undefined"
-          ? this.props.subscription
-          : null
+      ignoreValidation: typeof this.props.ignoreValidation !== 'undefined' ? this.props.ignoreValidation : false,
+      apiKey: typeof this.props.apiKey !== 'undefined' ? this.props.apiKey : null,
+      account: typeof this.props.account !== 'undefined' ? this.props.account : null,
+      isCheckout: typeof this.props.isCheckout !== 'undefined' ? this.props.isCheckout : false,
+      subscription: typeof this.props.subscription !== 'undefined' ? this.props.subscription : null
     };
 
     this.navigationStepChange = this.navigationStepChange.bind(this);
@@ -92,14 +76,12 @@ class Wizard extends React.Component {
     this.nextButtonClick = this.nextButtonClick.bind(this);
     this.previousButtonClick = this.previousButtonClick.bind(this);
     this.finishButtonClick = this.finishButtonClick.bind(this);
-    this.updateWidth = this.updateWidth.bind(this);
+    this.updateWidth = this.updateWidth.bind(this)
   }
-
   componentDidMount() {
     this.refreshAnimation(0);
     window.addEventListener("resize", this.updateWidth);
   }
-
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateWidth);
   }
@@ -108,9 +90,9 @@ class Wizard extends React.Component {
     const { defaultStepName } = nextProps;
 
     let stepIndex = 0;
-    if (typeof defaultStepName !== "undefined" && defaultStepName !== null) {
-      for (let step = 0; step < this.props.steps.length; step++) {
-        if (this.props.steps[step].stepName === defaultStepName) {
+    if(typeof defaultStepName !== "undefined" && defaultStepName !== null) {
+      for(let step = 0; step < this.props.steps.length; step++) {
+        if(this.props.steps[step].stepName === defaultStepName) {
           stepIndex = step;
           break;
         }
@@ -123,7 +105,6 @@ class Wizard extends React.Component {
   updateWidth() {
     this.refreshAnimation(this.state.currentStep);
   }
-
   navigationStepChange(key) {
     let nextKey = key;
     if (this.props.steps) {
@@ -152,19 +133,14 @@ class Wizard extends React.Component {
       }
     }
   }
-
   nextButtonClick() {
     if (
       (this.props.validate &&
-        ((typeof this[this.props.steps[this.state.currentStep].stepId] !==
-          "undefined" &&
-          this[this.props.steps[this.state.currentStep].stepId].isValidated !==
-            undefined &&
-          this[
-            this.props.steps[this.state.currentStep].stepId
-          ].isValidated()) ||
-          this[this.props.steps[this.state.currentStep].stepId].isValidated ===
-            undefined)) ||
+        ((typeof this[this.props.steps[this.state.currentStep].stepId] !== 'undefined' &&
+            this[this.props.steps[this.state.currentStep].stepId].isValidated !== undefined &&
+            this[this.props.steps[this.state.currentStep].stepId].isValidated()) ||
+          this[this.props.steps[this.state.currentStep].stepId].isValidated === undefined
+        )) ||
       this.props.validate === undefined
     ) {
       let key = this.state.currentStep + 1;
@@ -191,7 +167,6 @@ class Wizard extends React.Component {
       this.refreshAnimation(key);
     }
   }
-
   previousButtonClick() {
     let key = this.state.currentStep - 1;
     let allStatesUpdated = this.props.steps
@@ -218,7 +193,6 @@ class Wizard extends React.Component {
       this.refreshAnimation(key);
     }
   }
-
   finishButtonClick() {
     if (
       this.props.validate &&
@@ -226,16 +200,15 @@ class Wizard extends React.Component {
         undefined &&
         this[this.props.steps[this.state.currentStep].stepId].isValidated()) ||
         this[this.props.steps[this.state.currentStep].stepId].isValidated ===
-          undefined) &&
+        undefined) &&
       this.props.finishButtonClick !== undefined
     ) {
-      if (this.state.isCheckout) {
-        this.previousButtonClick();
+      if(this.state.isCheckout){
+        this.previousButtonClick()
       }
       this.props.finishButtonClick(this.state.allStates, this.props.steps);
     }
   }
-
   refreshAnimation(index) {
     var total = this.props.steps.length;
     var li_width = 100 / total;
@@ -280,11 +253,10 @@ class Wizard extends React.Component {
     };
     this.setState({ movingTabStyle: movingTabStyle });
   }
-
   render() {
-    const { classes, title, subtitle, color, steps } = this.props;
+    const { classes, title, subtitle, color, steps} = this.props;
     return (
-      <div className={classes.wizardContainer}>
+      <div className={classes.wizardContainer} ref="wizard">
         <Card className={classes.card}>
           <div className={classes.wizardHeader}>
             <h3 className={classes.title}>{title}</h3>
@@ -292,31 +264,28 @@ class Wizard extends React.Component {
           </div>
           <div className={classes.wizardNavigation}>
             <ul className={classes.nav}>
-              {typeof steps !== "undefined" &&
-                steps.map((prop, key) => {
-                  return (
-                    <li
-                      className={classes.steps}
-                      key={key}
-                      style={{ width: this.state.width }}
+              {typeof steps !== 'undefined' && steps.map((prop, key) => {
+                return (
+                  <li
+                    className={classes.steps}
+                    key={key}
+                    style={{ width: this.state.width }}
+                  >
+                    <a
+                      className={classes.stepsAnchor}
+                      onClick={() => this.navigationStepChange(key)}
                     >
-                      <a
-                        className={classes.stepsAnchor}
-                        onClick={() => this.navigationStepChange(key)}
-                        href={""}
-                      >
-                        {prop.stepName}
-                      </a>
-                    </li>
-                  );
-                })}
+                      {prop.stepName}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
             <div
               className={classes.movingTab + " " + classes[color]}
               style={this.state.movingTabStyle}
             >
-              {typeof steps[this.state.currentStep] !== "undefined" &&
-                steps[this.state.currentStep].stepName}
+              {typeof steps[this.state.currentStep] !== 'undefined' && steps[this.state.currentStep].stepName}
             </div>
           </div>
           <div className={classes.content}>
@@ -332,16 +301,8 @@ class Wizard extends React.Component {
                     allStates={this.state.allStates}
                     stepId={prop.stepId}
                     account={prop.account}
-                    validationErrors={
-                      typeof this.props.validationErrors === "undefined"
-                        ? []
-                        : this.props.validationErrors
-                    }
-                    apiKey={
-                      typeof this.props.validationErrors === "undefined"
-                        ? ""
-                        : this.props.apiKey
-                    }
+                    validationErrors={typeof this.props.validationErrors === "undefined" ? [] : this.props.validationErrors}
+                    apiKey={typeof this.props.validationErrors === "undefined" ? "" : this.props.apiKey}
                     subscription={prop.subscription}
                   />
                 </div>
@@ -362,7 +323,7 @@ class Wizard extends React.Component {
             <div className={classes.right}>
               {this.state.nextButton ? (
                 <Button
-                  color="danger"
+                  color="rose"
                   className={this.props.nextButtonClasses}
                   onClick={() => this.nextButtonClick()}
                 >
@@ -371,7 +332,7 @@ class Wizard extends React.Component {
               ) : null}
               {this.state.finishButton && !this.state.ignoreValidation ? (
                 <Button
-                  color="danger"
+                  color="rose"
                   className={this.finishButtonClasses}
                   onClick={() => this.finishButtonClick()}
                 >
@@ -388,7 +349,7 @@ class Wizard extends React.Component {
 }
 
 Wizard.defaultProps = {
-  color: "danger",
+  color: "rose",
   title: "Here should go your title",
   subtitle: "And this would be your subtitle",
   previousButtonText: "Previous",
@@ -415,7 +376,7 @@ Wizard.propTypes = {
     "danger",
     "success",
     "info",
-    "danger"
+    "rose"
   ]),
   title: PropTypes.string,
   subtitle: PropTypes.string,
