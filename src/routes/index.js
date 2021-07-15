@@ -46,7 +46,7 @@ let indexRoutes = [
     name: "CookBookViewPage",
     component: CookBookViewPage
   },
-  { path: "/:groupId", name: "GroupViewPage", component: GroupViewPage },
+  { path: "/:groupId", name: "GroupViewPage", component: GroupViewPage }, //TODO: Add int checking, redirect to 404 if not a number
 
   { path: "/", name: "HomePage", component: HomePage }
 ];
