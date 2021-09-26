@@ -29,12 +29,12 @@ class RecipeGenericInformation extends WizardStep {
   constructor(props) {
     super(props);
     this.state = {
-      firstname: "",
-      firstnameState: "",
-      lastname: "",
-      lastnameState: "",
-      phone: "",
-      phoneState: ""
+      firstname: "Test",
+      firstnameState: "Test",
+      lastname: "Last",
+      lastnameState: "Last",
+      phone: "123",
+      phoneState: "123"
     };
   }
   sendState() {
@@ -43,10 +43,8 @@ class RecipeGenericInformation extends WizardStep {
 
   // function that verifies if a string has a given length or not
   verifyLength(value, length) {
-    if (value.length >= length) {
-      return true;
-    }
-    return false;
+    return value.length >= length;
+
   }
 
   change(event, stateName, type, stateNameEqualTo) {

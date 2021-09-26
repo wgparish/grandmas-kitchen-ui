@@ -56,11 +56,11 @@ class CreateGroupPage extends React.Component {
     //If you want to add a login-wait animation/change then do so below
     let name = this.state.groupName;
     let groupDescription = this.state.groupDescription;
-    let isPublic = this.state.groupIsPublic;
+    // let isPublic = this.state.groupIsPublic;
     let groupAddRequest = {
       name: name,
       description: groupDescription,
-      public: isPublic
+      public: true //All groups are public for now TODO: Change Back!!
     };
     GroupController.groupAdd(groupAddRequest)
       .then(response => this.handleGroupAddServerSuccessResponse(response))

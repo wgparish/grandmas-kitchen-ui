@@ -10,7 +10,7 @@ import GridContainer from "../../../components/Grid/GridContainer";
 import GridItem from "../../../components/Grid/GridItem";
 import CardHeader from "../../../components/Card/CardHeader";
 import Button from "../../../components/CustomButtons/Button";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import componentsStyle from "../../../assets/jss/material-kit-pro-react/views/componentsStyle";
 import withStyles from "@material-ui/core/styles/withStyles";
 import GroupController from "../../../api/GroupController";
@@ -19,7 +19,6 @@ import { Add } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 import CardBody from "../../../components/Card/CardBody";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { Link } from "react-router-dom";
 
 class GroupPage extends React.Component {
   constructor(props) {
@@ -43,7 +42,7 @@ class GroupPage extends React.Component {
   }
 
   loadGroupList() {
-    GroupController.groupList()
+    GroupController.groupPublicList() //TODO: Show both public & non public
       .then(response => {
         this.setState({
           groupList: response.data,
@@ -87,7 +86,7 @@ class GroupPage extends React.Component {
                 position: "absolute",
                 top: "25%"
               }}
-            ></div>
+            />
             <StaticImageCarousel />
           </div>
         </Parallax>
@@ -97,7 +96,7 @@ class GroupPage extends React.Component {
               <GridContainer>
                 <GridItem xs={12} sm={5}>
                   <CardHeader color="danger" className={classes.cardHeader}>
-                    <h2>Groups</h2>
+                    <h2>Public Groups</h2>
                   </CardHeader>
                 </GridItem>
                 <GridItem xs={12} sm={4} />
@@ -123,7 +122,10 @@ class GroupPage extends React.Component {
                     return (
                       <GridItem xs={12} sm={12} md={4} lg={4}>
                         <Card danger color="danger">
-                          <Link to={"/" + group.id} className={classes.cardLink}>
+                          <Link
+                            to={"/" + group.id}
+                            className={classes.cardLink}
+                          >
                             <CardHeader plain>
                               <h3>{group.name}</h3>
                             </CardHeader>

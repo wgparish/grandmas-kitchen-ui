@@ -20,6 +20,8 @@ import RecipeGenericInformation from "./CreateRecipeWizardSteps/RecipeGenericInf
 import RecipeHardwareList from "./CreateRecipeWizardSteps/RecipeHardwareList";
 import RecipeIngredientList from "./CreateRecipeWizardSteps/RecipeIngredientList";
 import RecipeStepList from "./CreateRecipeWizardSteps/RecipeStepList";
+import RecipeController from "../../../api/RecipeController";
+import ReactGA from "react-ga";
 
 class CreateRecipePage extends React.Component {
   constructor(props) {
@@ -44,6 +46,65 @@ class CreateRecipePage extends React.Component {
   }
 
   createRecipe() {
+    console.log("Params: ");
+    console.log(this.props.match.params);
+
+    let cookbookId = this.props.match.params.cookBookId;
+    let groupId = this.props.match.params.groupId;
+
+    console.log(cookbookId + " :cookbookId: " + this.props.match.params.cookBookId);
+    console.log(groupId + " :groupId: " + this.props.match.params.groupId);
+
+    let recipeAddRequest = {
+      cookbookId: cookbookId,
+      groupId: groupId,
+      name: "Hardcode Entry",
+      recipeType: "FOOD",
+      description: "Hardcoded Description",
+      totalTime: 420,
+      prepTime: 69,
+      cookTime: 240,
+      serves: "4 People",
+      labelList: [
+        {
+          labelText: "Random",
+          recipeType: "FOOD"
+        }
+      ],
+      hardwareList: [
+        {
+          hardwareName: "Wok"
+        }
+      ],
+      stepList: [
+        {
+          sequenceNumber: 0,
+          description: "Hardcoded Step Description. blah blah blah",
+          title: "Step 0. The correct first number"
+        }
+      ],
+      ingredientCategoryList: [
+        {
+          sequenceNumber: 0,
+          name: "Main Course",
+          ingredientList: [
+            {
+              sequenceNumber: 0,
+              quantity: "1/2",
+              unit: "tsp",
+              name: "corriander",
+              optional: false
+            }
+          ]
+        }
+      ]
+    };
+
+    console.log(recipeAddRequest);
+
+    RecipeController.recipeAdd(recipeAddRequest)
+      .then(response => this.handleRecipeAddServerSuccessResponse(response))
+      .catch(error => this.handleRecipeAddServerError(error));
     //If you want to add a login-wait animation/change then do so below
     // let name = this.state.recipeName;
     // let cookBookDescription = this.state.recipeDescription;
@@ -58,44 +119,44 @@ class CreateRecipePage extends React.Component {
     //   .then(response => this.handleCookBookAddServerSuccessResponse(response))
     //   .catch(error => this.handleCookBookAddServerError(error));
   }
-  //
-  // handleCookBookAddServerError(error) {
-  //   console.log(error);
-  //   if (
-  //     error != null &&
-  //     error.response != null &&
-  //     error.response.status != null
-  //   ) {
-  //     let statusCode = error.response.status;
-  //     this.setState({ userLoggedIn: false });
-  //     if (statusCode === 400) {
-  //       let responseBody =
-  //         typeof error.response.data === "string"
-  //           ? [error.response.data]
-  //           : error.response.data; //should be array of strings
-  //       this.setState({ errorText: responseBody });
-  //     } else if (statusCode === 403) {
-  //       //user already logged in somehow
-  //       this.props.history.push("/");
-  //     } else {
-  //       this.setState({
-  //         errorText:
-  //           "We are experiencing technical difficulties. Please try again, or contact support if this persists."
-  //       });
-  //     }
-  //   }
-  // }
-  //
-  // handleCookBookAddServerSuccessResponse(response) {
-  //   ReactGA.event({
-  //     category: "CookBook",
-  //     action: "Create CookBook",
-  //     label: this.state.cookbookName
-  //   });
-  //   console.log(response);
-  //
-  //   this.setState({ createdGroup: true });
-  // }
+
+  handleRecipeAddServerError(error) {
+    console.log(error);
+    //   if (
+    //     error != null &&
+    //     error.response != null &&
+    //     error.response.status != null
+    //   ) {
+    //     let statusCode = error.response.status;
+    //     this.setState({ userLoggedIn: false });
+    //     if (statusCode === 400) {
+    //       let responseBody =
+    //         typeof error.response.data === "string"
+    //           ? [error.response.data]
+    //           : error.response.data; //should be array of strings
+    //       this.setState({ errorText: responseBody });
+    //     } else if (statusCode === 403) {
+    //       //user already logged in somehow
+    //       this.props.history.push("/");
+    //     } else {
+    //       this.setState({
+    //         errorText:
+    //           "We are experiencing technical difficulties. Please try again, or contact support if this persists."
+    //       });
+    //     }
+    //   }
+  }
+
+  handleRecipeAddServerSuccessResponse(response) {
+    ReactGA.event({
+      category: "Recipe",
+      action: "Create Recipe",
+      label: this.state.recipeName
+    });
+    console.log(response);
+
+    this.setState({ createdRecipe: true });
+  }
 
   render() {
     const { classes, ...rest } = this.props;
@@ -150,7 +211,7 @@ class CreateRecipePage extends React.Component {
                       title="Create Your Recipe"
                       subtitle="This information will be all about your recipe."
                       finishButtonClick={allStates => {
-                        this.handleFinishedButtonClick(allStates);
+                        this.createRecipe(allStates);
                       }}
                     />
                   </GridItem>
