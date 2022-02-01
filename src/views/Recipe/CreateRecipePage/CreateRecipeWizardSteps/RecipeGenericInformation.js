@@ -1,7 +1,4 @@
 import React from "react";
-// @material-ui/icons
-import Face from "@material-ui/icons/Face";
-import RecordVoiceOver from "@material-ui/icons/RecordVoiceOver";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -9,6 +6,8 @@ import WizardStep from "../../../../components/Wizard/WizardStep";
 import GridContainer from "../../../../components/Grid/GridContainer";
 import GridItem from "../../../../components/Grid/GridItem";
 import CustomInput from "../../../../components/CustomInput/CustomInput";
+import { InputLabel, MenuItem, Select } from "@material-ui/core";
+import { Description, MenuBook } from "@material-ui/icons";
 // core components
 
 const style = {
@@ -29,12 +28,12 @@ class RecipeGenericInformation extends WizardStep {
   constructor(props) {
     super(props);
     this.state = {
-      firstname: "Test",
-      firstnameState: "Test",
-      lastname: "Last",
-      lastnameState: "Last",
-      phone: "123",
-      phoneState: "123"
+      recipeName: "Test",
+      recipeNameState: "Test",
+      lastname: "desc",
+      descriptionState: "desc",
+      recipeType: "",
+      recipeTypeState: ""
     };
   }
   sendState() {
@@ -44,7 +43,6 @@ class RecipeGenericInformation extends WizardStep {
   // function that verifies if a string has a given length or not
   verifyLength(value, length) {
     return value.length >= length;
-
   }
 
   change(event, stateName, type, stateNameEqualTo) {
@@ -64,26 +62,26 @@ class RecipeGenericInformation extends WizardStep {
 
   isValidated() {
     return (
-      this.state.firstnameState === "success" &&
-      this.state.lastnameState === "success"
+      this.state.recipeNameState === "success" &&
+      this.state.descriptionState === "success"
     );
   }
 
   render() {
     const { classes, validationErrors } = this.props;
 
-    let firstNameError = validationErrors.filter(validationError =>
-      validationError.includes("First Name")
+    let recipeNameError = validationErrors.filter(validationError =>
+      validationError.includes("Recipe Name")
     );
-    let lastNameError = validationErrors.filter(validationError =>
-      validationError.includes("Last Name")
+    let descriptionError = validationErrors.filter(validationError =>
+      validationError.includes("Description")
     );
-    let phoneNumberError = validationErrors.filter(validationError =>
-      validationError.includes("Phone Number")
-    );
-    let firstNameErrorExists = firstNameError.length > 0;
-    let lastNameErrorExists = lastNameError.length > 0;
-    let phoneNumberErrorExists = phoneNumberError.length > 0;
+    // let totalTimeError = validationErrors.filter(validationError =>
+    //   validationError.includes("Total Time")
+    // );
+    let recipeNameErrorExists = recipeNameError.length > 0;
+    let descriptionErrorExists = descriptionError.length > 0;
+    // let totalTimeErrorExists = totalTimeError.length > 0;
 
     return (
       <GridContainer justify="center">
@@ -96,108 +94,131 @@ class RecipeGenericInformation extends WizardStep {
         <GridItem xs={12} sm={6}>
           <CustomInput
             success={
-              this.state.firstnameState === "success" && !firstNameErrorExists
+              this.state.recipeNameState === "success" && !recipeNameErrorExists
             }
             error={
-              this.state.firstnameState === "error" || firstNameErrorExists
+              this.state.recipeNameState === "error" || recipeNameErrorExists
             }
             labelText={
-              firstNameErrorExists ? (
+              recipeNameErrorExists ? (
                 <span>
-                  First Name <small>({firstNameError[0]})</small>
+                  Recipe Name <small>({recipeNameError[0]})</small>
                 </span>
               ) : (
                 <span>
-                  First Name <small>(required)</small>
+                  Recipe Name <small>(required)</small>
                 </span>
               )
             }
-            id="firstname"
+            id="recipeName"
             formControlProps={{
               fullWidth: true
             }}
             inputProps={{
               onChange: event => {
-                this.change(event, "firstname", "length", 3);
-                // registrationData.firstName = event.target.value;
+                this.change(event, "recipeName", "length", 3);
               },
               endAdornment: (
                 <InputAdornment
                   position="end"
                   className={classes.inputAdornment}
                 >
-                  <Face className={classes.inputAdornmentIcon} />
+                  <MenuBook className={classes.inputAdornmentIcon} />
                 </InputAdornment>
               )
             }}
           />
           <CustomInput
             success={
-              this.state.lastnameState === "success" && !lastNameErrorExists
+              this.state.descriptionState === "success" &&
+              !descriptionErrorExists
             }
-            error={this.state.lastnameState === "error" || lastNameErrorExists}
+            error={
+              this.state.descriptionState === "error" || descriptionErrorExists
+            }
             labelText={
-              lastNameErrorExists ? (
+              descriptionErrorExists ? (
                 <span>
-                  Last Name <small>({lastNameError[0]})</small>
+                  Description <small>({descriptionError[0]})</small>
                 </span>
               ) : (
                 <span>
-                  Last Name <small>(required)</small>
+                  Description <small>(required)</small>
                 </span>
               )
             }
-            id="lastname"
+            id="description"
             formControlProps={{
               fullWidth: true
             }}
             inputProps={{
               onChange: event => {
-                this.change(event, "lastname", "length", 3);
-                // registrationData.lastName = event.target.value;
+                this.change(event, "description", "length", 3);
               },
               endAdornment: (
                 <InputAdornment
                   position="end"
                   className={classes.inputAdornment}
                 >
-                  <RecordVoiceOver className={classes.inputAdornmentIcon} />
+                  <Description className={classes.inputAdornmentIcon} />
                 </InputAdornment>
               )
             }}
           />
-          <CustomInput
-            error={phoneNumberErrorExists}
-            labelText={
-              phoneNumberErrorExists ? (
-                <span>
-                  Phone <small>(optional)</small>
-                </span>
-              ) : (
-                <span>
-                  Phone <small>({phoneNumberError[0]})</small>
-                </span>
-              )
+          <InputLabel>Recipe Type</InputLabel>
+          <Select
+            labelId="recipeTypeSelect"
+            id="recipeTypeSelect"
+            value={this.state.recipeType}
+            label="Recipe Type"
+            onChange={event =>
+              this.setState({ recipeType: event.target.value })
             }
-            id="phone"
-            formControlProps={{
-              fullWidth: true
-            }}
-            inputProps={{
-              onChange: event => {
-                this.change(event, "phone", "", null);
-                // registrationData.phoneNumber = event.target.value;
-              },
-              endAdornment: (
-                <InputAdornment
-                  position="end"
-                  className={classes.inputAdornment}
-                >
-                  <RecordVoiceOver className={classes.inputAdornmentIcon} />
-                </InputAdornment>
-              )
-            }}
-          />
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={"FOOD"}>Food</MenuItem>
+            <MenuItem value={"DRINK"}>Drinks</MenuItem>
+            <MenuItem value={"PET"}>Animal Related</MenuItem>
+          </Select>
+          {/*FIXME: Commenting out due to Total Time being int when it should be string.*/}
+          {/*<CustomInput*/}
+          {/*  success={*/}
+          {/*    this.state.totalTimeState === "success" && !totalTimeErrorExists*/}
+          {/*  }*/}
+          {/*  error={*/}
+          {/*    this.state.totalTimeState === "error" || totalTimeErrorExists*/}
+          {/*  }*/}
+          {/*  labelText={*/}
+          {/*    totalTimeErrorExists ? (*/}
+          {/*      <span>*/}
+          {/*        Total Time <small>({descriptionError[0]})</small>*/}
+          {/*      </span>*/}
+          {/*    ) : (*/}
+          {/*      <span>*/}
+          {/*        Total Time <small>(required)</small>*/}
+          {/*      </span>*/}
+          {/*    )*/}
+          {/*  }*/}
+          {/*  id="description"*/}
+          {/*  formControlProps={{*/}
+          {/*    fullWidth: true*/}
+          {/*  }}*/}
+          {/*  inputProps={{*/}
+          {/*    onChange: event => {*/}
+          {/*      this.change(event, "description", "length", 3);*/}
+          {/*    },*/}
+          {/*    endAdornment: (*/}
+          {/*      <InputAdornment*/}
+          {/*        position="end"*/}
+          {/*        className={classes.inputAdornment}*/}
+          {/*      >*/}
+          {/*        <RecordVoiceOver className={classes.inputAdornmentIcon} />*/}
+          {/*      </InputAdornment>*/}
+          {/*    )*/}
+          {/*  }}*/}
+          {/*/>*/}
         </GridItem>
       </GridContainer>
     );
