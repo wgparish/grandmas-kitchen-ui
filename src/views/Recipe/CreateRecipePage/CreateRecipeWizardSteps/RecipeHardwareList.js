@@ -58,13 +58,6 @@ class RecipeHardwareList extends WizardStep {
     this.setState({ hardwareList: tempHardwareList });
   }
 
-  isValidated() {
-    return (
-      this.state.firstnameState === "success" &&
-      this.state.lastnameState === "success"
-    );
-  }
-
   render() {
     const { classes } = this.props;
 
