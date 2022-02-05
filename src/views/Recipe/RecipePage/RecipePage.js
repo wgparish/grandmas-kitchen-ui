@@ -70,6 +70,8 @@ class RecipePage extends React.Component {
 
   render() {
     const { classes, ...rest } = this.props;
+    const hardwareList = this.state.recipeInfo.hardwareList;
+    console.log(hardwareList);
 
     return (
       <div>
@@ -138,23 +140,84 @@ class RecipePage extends React.Component {
                           </div>
                         </CardBody>
                       </Card>
-                      {/*<Card danger color="danger">*/}
-                      {/*  <Link to={"/" + group.id} className={classes.cardLink}>*/}
-                      {/*    <CardHeader plain>*/}
-                      {/*      <h3>{group.name}</h3>*/}
-                      {/*    </CardHeader>*/}
-                      {/*    <CardBody>*/}
-                      {/*      <div*/}
-                      {/*        style={{*/}
-                      {/*          display: "flex",*/}
-                      {/*          justifyContent: "center"*/}
-                      {/*        }}*/}
-                      {/*      >*/}
-                      {/*        <p>{group.description}</p>*/}
-                      {/*      </div>*/}
-                      {/*    </CardBody>*/}
-                      {/*  </Link>*/}
-                      {/*</Card>*/}
+                    </GridItem>
+                    <GridItem xs={12} sm={12} md={8} lg={8}>
+                      <Card>
+                        <CardBody>
+                          <div>
+                            <h2>Equipment Needed</h2>
+                          </div>
+                          <div>
+                            <List>
+                              {this.state.isLoaded &&
+                                this.state.recipeInfo.hardwareList?.map(
+                                  hardware => {
+                                    return (
+                                      <ListItem>
+                                        {hardware.hardwareName}
+                                      </ListItem>
+                                    );
+                                  }
+                                )}
+                            </List>
+                          </div>
+                        </CardBody>
+                      </Card>
+                    </GridItem>
+                    <GridItem xs={12} sm={12} md={8} lg={8}>
+                      <Card>
+                        <CardBody>
+                          <div>
+                            <h2>Ingredients</h2>
+                          </div>
+                          <div>
+                            {this.state.isLoaded &&
+                              this.state.recipeInfo.ingredientCategoryList?.map(
+                                category => {
+                                  return (
+                                    <div>
+                                      <h3> {category.name} </h3>
+                                      <List>
+                                        {this.state.isLoaded &&
+                                          category.ingredientList?.map(
+                                            ingredient => {
+                                              return (
+                                                <ListItem>
+                                                  {ingredient.quantity}{" "}
+                                                  {ingredient.unit}{" "}
+                                                  {ingredient.name}
+                                                </ListItem>
+                                              );
+                                            }
+                                          )}
+                                      </List>
+                                    </div>
+                                  );
+                                }
+                              )}
+                          </div>
+                        </CardBody>
+                      </Card>
+                    </GridItem>
+                    <GridItem xs={12} sm={12} md={8} lg={8}>
+                      <Card>
+                        <CardBody>
+                          <div>
+                            <h2>Steps</h2>
+                          </div>
+                          <div>
+                            {this.state.isLoaded &&
+                              this.state.recipeInfo.stepList?.map(step => {
+                                return (
+                                  <div>
+                                    <h3>{step.title}</h3>
+                                    <p>{step.description}</p>
+                                  </div>
+                                );
+                              })}
+                          </div>
+                        </CardBody>
+                      </Card>
                     </GridItem>
                   </GridContainer>
                 </div>
