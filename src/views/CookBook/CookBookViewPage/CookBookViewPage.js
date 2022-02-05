@@ -35,7 +35,7 @@ class CookBookViewPage extends React.Component {
     };
 
     this.loadCookBookInfo();
-    // this.loadRecipeList();
+    this.loadRecipeList();
     this.loadUserInformation();
   }
 
@@ -147,19 +147,31 @@ class CookBookViewPage extends React.Component {
                     return (
                       <GridItem xs={12} sm={12} md={4} lg={4}>
                         <Card danger color="danger">
-                          <CardHeader plain>
-                            <h3>{recipe.name}</h3>
-                          </CardHeader>
-                          <CardBody>
-                            <div
-                              style={{
-                                display: "flex",
-                                justifyContent: "center"
-                              }}
-                            >
-                              <p>{recipe.description}</p>
-                            </div>
-                          </CardBody>
+                          <Link
+                            to={
+                              "/" +
+                              this.props.match.params.groupId +
+                              "/" +
+                              this.props.match.params.cookBookId +
+                              "/" +
+                              recipe.id
+                            }
+                            className={classes.cardLink}
+                          >
+                            <CardHeader plain>
+                              <h3>{recipe.name}</h3>
+                            </CardHeader>
+                            <CardBody>
+                              <div
+                                style={{
+                                  display: "flex",
+                                  justifyContent: "center"
+                                }}
+                              >
+                                <p>{recipe.description}</p>
+                              </div>
+                            </CardBody>
+                          </Link>
                         </Card>
                       </GridItem>
                     );
@@ -172,10 +184,20 @@ class CookBookViewPage extends React.Component {
                           style={{ display: "flex", justifyContent: "center" }}
                         >
                           <Link
-                            to={"/create-recipe/" + this.props.match.params.groupId + "/" + this.props.match.params.cookBookId}
+                            to={
+                              "/create-recipe/" +
+                              this.props.match.params.groupId +
+                              "/" +
+                              this.props.match.params.cookBookId
+                            }
                           >
                             <IconButton
-                              to={"/create-recipe/" + this.props.match.params.groupId + "/" + this.props.match.params.cookBookId}
+                              to={
+                                "/create-recipe/" +
+                                this.props.match.params.groupId +
+                                "/" +
+                                this.props.match.params.cookBookId
+                              }
                               color="info"
                               aria-label={"Create Recipe"}
                             >

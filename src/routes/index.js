@@ -12,6 +12,7 @@ import GroupViewPage from "../views/Group/GroupViewPage/GroupViewPage";
 import CreateCookBookPage from "../views/CookBook/CreateCookbookPage/CreateCookBookPage";
 import CookBookViewPage from "../views/CookBook/CookBookViewPage/CookBookViewPage";
 import CreateRecipePage from "../views/Recipe/CreateRecipePage/CreateRecipePage";
+import RecipePage from "../views/Recipe/RecipePage/RecipePage";
 
 let indexRoutes = [
   { path: "/login", name: "LoginPage", component: LoginPage },
@@ -40,6 +41,11 @@ let indexRoutes = [
     path: "/create-recipe/:groupId/:cookBookId",
     name: "CreateRecipePage",
     component: CreateRecipePage
+  },
+  {
+    path: "/:groupId/:cookBookId/:recipeId",
+    name: "RecipeViewPage",
+    component: RecipePage
   },
   {
     path: "/:groupId/:cookBookId",
