@@ -148,6 +148,7 @@ class RecipeIngredientList extends WizardStep {
                               }}
                             />
                           </GridItem>
+                          {/*TODO: Add Quantity & Unit & Optional checkbox*/}
                         </div>
                       );
                     }

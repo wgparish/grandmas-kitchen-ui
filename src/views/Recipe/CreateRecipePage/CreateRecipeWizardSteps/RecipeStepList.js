@@ -1,7 +1,4 @@
 import React from "react";
-// @material-ui/icons
-import Face from "@material-ui/icons/Face";
-import RecordVoiceOver from "@material-ui/icons/RecordVoiceOver";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -38,16 +35,12 @@ class RecipeStepList extends WizardStep {
   }
 
   addStep() {
-    console.log(this.state);
-    console.log("=================");
     const tempStepList = [...this.state.stepList];
     tempStepList.push({ stepName: "" });
     this.setState({ stepList: tempStepList });
   }
 
   removeStep() {
-    console.log(this);
-    console.log("=================");
     const tempStepList = [...this.state.stepList];
     tempStepList.pop();
     this.setState({ stepList: tempStepList });
@@ -55,9 +48,11 @@ class RecipeStepList extends WizardStep {
 
   change(event, index) {
     const tempStepList = [...this.state.stepList];
-    tempStepList[index][event.target.id] = event.target.value;
-    console.log("Hardware Item: " + event.target.value);
-    this.setState({ stepList: tempStepList });
+    console.log(tempStepList);
+    tempStepList[index]["stepName"] = event.target.value;
+    console.log("StepName Item: " + event.target.value);
+    console.log(tempStepList);
+    this.setState({ stepList: tempStepList }, () => console.log(this.state));
   }
 
   render() {
@@ -69,7 +64,7 @@ class RecipeStepList extends WizardStep {
           <h4 className={classes.infoText}>How are we cooking this recipe?</h4>
         </GridItem>
         <GridItem xs={12} sm={6}>
-          {this.state.stepList.map((stepList, i) => {
+          {this.state.stepList.map((step, i) => {
             return (
               <CustomInput
                 labelText={<span>Step Name</span>}

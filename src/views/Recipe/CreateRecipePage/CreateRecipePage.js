@@ -45,22 +45,60 @@ class CreateRecipePage extends React.Component {
     document.body.scrollTop = 0;
   }
 
-  createRecipe() {
-    console.log("Params: ");
-    console.log(this.props.match.params);
+  createRecipe(states) {
+    console.log("==================");
+    console.log("States: ");
+    console.log(states);
+
+    const generalInfo = states[0]["general"];
+    const hardwareInfo = states[1]["hardware"];
+    const ingredientInfo = states[2]["ingredients"];
+    const stepsInfo = states[3]["steps"];
+
+    //Add sequenceNumber to Steps
+    stepsInfo["stepList"] = stepsInfo["stepList"].map((step, index) => {
+      return {
+        sequenceNumber: index,
+        title: step["stepName"],
+        description: "TBD",
+        ...step
+      };
+    });
+    console.log("Steps: ");
+    console.log(stepsInfo);
+
+    ingredientInfo["categoryList"] = ingredientInfo["categoryList"].map(
+      (category, catInd) => {
+        return {
+          sequenceNumber: catInd,
+          ingredientList: category["ingredientList"].map(
+            (ingredient, ingInd) => {
+              return {
+                sequenceNumber: ingInd,
+                quantity: 1,
+                unit: "tsp",
+                optional: false,
+                name: ingredient["ingredientName"],
+                ...ingredient
+              };
+            }
+          ),
+          name: category["categoryName"]
+        };
+      }
+    );
+    console.log("Category: ");
+    console.log(ingredientInfo);
 
     let cookbookId = this.props.match.params.cookBookId;
     let groupId = this.props.match.params.groupId;
 
-    console.log(cookbookId + " :cookbookId: " + this.props.match.params.cookBookId);
-    console.log(groupId + " :groupId: " + this.props.match.params.groupId);
-
     let recipeAddRequest = {
       cookbookId: cookbookId,
       groupId: groupId,
-      name: "Hardcode Entry",
-      recipeType: "FOOD",
-      description: "Hardcoded Description",
+      name: generalInfo["recipeName"],
+      recipeType: generalInfo["recipeType"],
+      description: generalInfo["description"],
       totalTime: 420,
       prepTime: 69,
       cookTime: 240,
@@ -71,33 +109,9 @@ class CreateRecipePage extends React.Component {
           recipeType: "FOOD"
         }
       ],
-      hardwareList: [
-        {
-          hardwareName: "Wok"
-        }
-      ],
-      stepList: [
-        {
-          sequenceNumber: 0,
-          description: "Hardcoded Step Description. blah blah blah",
-          title: "Step 0. The correct first number"
-        }
-      ],
-      ingredientCategoryList: [
-        {
-          sequenceNumber: 0,
-          name: "Main Course",
-          ingredientList: [
-            {
-              sequenceNumber: 0,
-              quantity: "1/2",
-              unit: "tsp",
-              name: "corriander",
-              optional: false
-            }
-          ]
-        }
-      ]
+      hardwareList: hardwareInfo["hardwareList"],
+      stepList: stepsInfo["stepList"],
+      ingredientCategoryList: ingredientInfo["categoryList"]
     };
 
     console.log(recipeAddRequest);

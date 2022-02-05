@@ -182,6 +182,7 @@ class RecipeGenericInformation extends WizardStep {
             <MenuItem value={"DRINK"}>Drinks</MenuItem>
             <MenuItem value={"PET"}>Animal Related</MenuItem>
           </Select>
+          {/*TODO: Add TotalTime, prepTime, cookTime, Serves, & labelList*/}
           {/*FIXME: Commenting out due to Total Time being int when it should be string.*/}
           {/*<CustomInput*/}
           {/*  success={*/}
