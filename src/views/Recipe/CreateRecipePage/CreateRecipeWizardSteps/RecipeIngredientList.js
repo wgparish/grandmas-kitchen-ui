@@ -8,6 +8,7 @@ import GridItem from "../../../../components/Grid/GridItem";
 import CustomInput from "../../../../components/CustomInput/CustomInput";
 import { OutdoorGrill } from "@material-ui/icons";
 import Button from "../../../../components/CustomButtons/Button";
+import Grid from "@material-ui/core/Grid";
 
 const style = {
   infoText: {
@@ -52,16 +53,16 @@ class RecipeIngredientList extends WizardStep {
   }
 
   addIngredient(index) {
-    console.log(this.state);
-    console.log("=================: " + index);
     const tempCategoryList = [...this.state.categoryList];
-    tempCategoryList[index]["ingredientList"].push({ ingredientName: "" });
+    tempCategoryList[index]["ingredientList"].push({
+      ingredientName: "",
+      quantity: "",
+      unit: ""
+    });
     this.setState({ categoryList: tempCategoryList });
   }
 
   removeIngredient(index) {
-    console.log(this);
-    console.log("=================");
     const tempCategoryList = [...this.state.categoryList];
     tempCategoryList[index]["ingredientList"].pop();
     this.setState({ categoryList: tempCategoryList });
@@ -69,8 +70,6 @@ class RecipeIngredientList extends WizardStep {
 
   change(event, index, ingredientIndex) {
     const tempCategoryList = [...this.state.categoryList];
-    console.log("Before: ");
-    console.log(tempCategoryList);
     if (ingredientIndex === null) {
       tempCategoryList[index][event.target.id] = event.target.value;
     } else {
@@ -78,8 +77,6 @@ class RecipeIngredientList extends WizardStep {
         event.target.id
       ] = event.target.value;
     }
-    console.log("After: ");
-    console.log(tempCategoryList);
     this.setState({ categoryList: tempCategoryList });
   }
 
@@ -123,8 +120,36 @@ class RecipeIngredientList extends WizardStep {
                   {categoryItem.ingredientList.map(
                     (ingredientItem, ingredientIndex) => {
                       return (
-                        <div>
-                          <GridItem s={12} sm={12}>
+                        <GridItem style={{ display: "flex" }}>
+                          <GridItem s={1}>
+                            <CustomInput
+                              labelText={<span>Quantity</span>}
+                              id="quantity"
+                              formControlProps={{
+                                fullWidth: true
+                              }}
+                              inputProps={{
+                                onChange: event => {
+                                  this.change(event, i, ingredientIndex);
+                                }
+                              }}
+                            />
+                          </GridItem>
+                          <GridItem s={1}>
+                            <CustomInput
+                              labelText={<span>Unit</span>}
+                              id="unit"
+                              formControlProps={{
+                                fullWidth: true
+                              }}
+                              inputProps={{
+                                onChange: event => {
+                                  this.change(event, i, ingredientIndex);
+                                }
+                              }}
+                            />
+                          </GridItem>
+                          <GridItem s={8}>
                             <CustomInput
                               labelText={<span>Ingredient Name</span>}
                               id="ingredientName"
@@ -134,22 +159,12 @@ class RecipeIngredientList extends WizardStep {
                               inputProps={{
                                 onChange: event => {
                                   this.change(event, i, ingredientIndex);
-                                },
-                                endAdornment: (
-                                  <InputAdornment
-                                    position="end"
-                                    className={classes.inputAdornment}
-                                  >
-                                    <OutdoorGrill
-                                      className={classes.inputAdornmentIcon}
-                                    />
-                                  </InputAdornment>
-                                )
+                                }
                               }}
                             />
                           </GridItem>
                           {/*TODO: Add Quantity & Unit & Optional checkbox*/}
-                        </div>
+                        </GridItem>
                       );
                     }
                   )}

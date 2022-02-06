@@ -48,10 +48,7 @@ class RecipeStepList extends WizardStep {
 
   change(event, index) {
     const tempStepList = [...this.state.stepList];
-    console.log(tempStepList);
     tempStepList[index]["stepName"] = event.target.value;
-    console.log("StepName Item: " + event.target.value);
-    console.log(tempStepList);
     this.setState({ stepList: tempStepList }, () => console.log(this.state));
   }
 

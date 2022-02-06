@@ -7,7 +7,7 @@ import GridContainer from "../../../../components/Grid/GridContainer";
 import GridItem from "../../../../components/Grid/GridItem";
 import CustomInput from "../../../../components/CustomInput/CustomInput";
 import { InputLabel, MenuItem, Select } from "@material-ui/core";
-import { Description, MenuBook } from "@material-ui/icons";
+import {Description, MenuBook, Restaurant, Speed} from "@material-ui/icons";
 // core components
 
 const style = {
@@ -32,7 +32,7 @@ class RecipeGenericInformation extends WizardStep {
       recipeNameState: "Test",
       lastname: "desc",
       descriptionState: "desc",
-      recipeType: "",
+      recipeType: "FOOD",
       recipeTypeState: ""
     };
   }
@@ -175,51 +175,72 @@ class RecipeGenericInformation extends WizardStep {
               this.setState({ recipeType: event.target.value })
             }
           >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
             <MenuItem value={"FOOD"}>Food</MenuItem>
             <MenuItem value={"DRINK"}>Drinks</MenuItem>
             <MenuItem value={"PET"}>Animal Related</MenuItem>
           </Select>
           {/*TODO: Add TotalTime, prepTime, cookTime, Serves, & labelList*/}
           {/*FIXME: Commenting out due to Total Time being int when it should be string.*/}
-          {/*<CustomInput*/}
-          {/*  success={*/}
-          {/*    this.state.totalTimeState === "success" && !totalTimeErrorExists*/}
-          {/*  }*/}
-          {/*  error={*/}
-          {/*    this.state.totalTimeState === "error" || totalTimeErrorExists*/}
-          {/*  }*/}
-          {/*  labelText={*/}
-          {/*    totalTimeErrorExists ? (*/}
-          {/*      <span>*/}
-          {/*        Total Time <small>({descriptionError[0]})</small>*/}
-          {/*      </span>*/}
-          {/*    ) : (*/}
-          {/*      <span>*/}
-          {/*        Total Time <small>(required)</small>*/}
-          {/*      </span>*/}
-          {/*    )*/}
-          {/*  }*/}
-          {/*  id="description"*/}
-          {/*  formControlProps={{*/}
-          {/*    fullWidth: true*/}
-          {/*  }}*/}
-          {/*  inputProps={{*/}
-          {/*    onChange: event => {*/}
-          {/*      this.change(event, "description", "length", 3);*/}
-          {/*    },*/}
-          {/*    endAdornment: (*/}
-          {/*      <InputAdornment*/}
-          {/*        position="end"*/}
-          {/*        className={classes.inputAdornment}*/}
-          {/*      >*/}
-          {/*        <RecordVoiceOver className={classes.inputAdornmentIcon} />*/}
-          {/*      </InputAdornment>*/}
-          {/*    )*/}
-          {/*  }}*/}
-          {/*/>*/}
+          <CustomInput
+            labelText={<span>Prep Time</span>}
+            id="prepTime"
+            formControlProps={{
+              fullWidth: true
+            }}
+            inputProps={{
+              onChange: event => {
+                this.change(event, "prepTime", "", 0);
+              },
+              endAdornment: (
+                <InputAdornment
+                  position="end"
+                  className={classes.inputAdornment}
+                >
+                  <Speed className={classes.inputAdornmentIcon} />
+                </InputAdornment>
+              )
+            }}
+          />
+          <CustomInput
+            labelText={<span>Cook Time</span>}
+            id="cookTime"
+            formControlProps={{
+              fullWidth: true
+            }}
+            inputProps={{
+              onChange: event => {
+                this.change(event, "cookTime", "", 0);
+              },
+              endAdornment: (
+                <InputAdornment
+                  position="end"
+                  className={classes.inputAdornment}
+                >
+                  <Speed className={classes.inputAdornmentIcon} />
+                </InputAdornment>
+              )
+            }}
+          />
+          <CustomInput
+            labelText={<span>How many does this serve?</span>}
+            id="serves"
+            formControlProps={{
+              fullWidth: true
+            }}
+            inputProps={{
+              onChange: event => {
+                this.change(event, "serves", "", 0);
+              },
+              endAdornment: (
+                <InputAdornment
+                  position="end"
+                  className={classes.inputAdornment}
+                >
+                  <Restaurant className={classes.inputAdornmentIcon} />
+                </InputAdornment>
+              )
+            }}
+          />
         </GridItem>
       </GridContainer>
     );

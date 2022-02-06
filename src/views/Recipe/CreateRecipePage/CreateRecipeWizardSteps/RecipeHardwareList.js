@@ -36,16 +36,12 @@ class RecipeHardwareList extends WizardStep {
   }
 
   addHardwareItem() {
-    console.log(this.state);
-    console.log("=================");
     const tempHardwareList = [...this.state.hardwareList];
     tempHardwareList.push({ hardwareName: "" });
     this.setState({ hardwareList: tempHardwareList });
   }
 
   removeHardwareItem() {
-    console.log(this);
-    console.log("=================");
     const tempHardwareList = [...this.state.hardwareList];
     tempHardwareList.pop();
     this.setState({ hardwareList: tempHardwareList });
@@ -54,7 +50,6 @@ class RecipeHardwareList extends WizardStep {
   change(event, index) {
     const tempHardwareList = [...this.state.hardwareList];
     tempHardwareList[index]["hardwareName"] = event.target.value;
-    console.log("Hardware Item: " + event.target.value);
     this.setState({ hardwareList: tempHardwareList });
   }
 

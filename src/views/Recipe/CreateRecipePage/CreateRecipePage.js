@@ -8,11 +8,6 @@ import image from "../../../assets/img/bread.jpg";
 import GridContainer from "../../../components/Grid/GridContainer";
 import GridItem from "../../../components/Grid/GridItem";
 import Fade from "@material-ui/core/Fade";
-import Card from "../../../components/Card/Card";
-import CardHeader from "../../../components/Card/CardHeader";
-import CardBody from "../../../components/Card/CardBody";
-import CardFooter from "../../../components/Card/CardFooter";
-import Button from "../../../components/CustomButtons/Button";
 import PageFooter from "../../../components/Footer/PageFooter";
 import { Redirect } from "react-router-dom";
 import Wizard from "../../../components/Wizard/Wizard";
@@ -99,10 +94,12 @@ class CreateRecipePage extends React.Component {
       name: generalInfo["recipeName"],
       recipeType: generalInfo["recipeType"],
       description: generalInfo["description"],
-      totalTime: 420,
-      prepTime: 69,
-      cookTime: 240,
-      serves: "4 People",
+      totalTime: (
+        parseInt(generalInfo["prepTime"]) || 0 + parseInt(generalInfo["cookTime"]) || 0
+      ).toString(),
+      prepTime: generalInfo["prepTime"],
+      cookTime: generalInfo["cookTime"],
+      serves: generalInfo["serves"],
       labelList: [
         {
           labelText: "Random",
@@ -119,46 +116,10 @@ class CreateRecipePage extends React.Component {
     RecipeController.recipeAdd(recipeAddRequest)
       .then(response => this.handleRecipeAddServerSuccessResponse(response))
       .catch(error => this.handleRecipeAddServerError(error));
-    //If you want to add a login-wait animation/change then do so below
-    // let name = this.state.recipeName;
-    // let cookBookDescription = this.state.recipeDescription;
-    // let groupId = this.props.match.params.groupId;
-    // let cookBookId = this.props.match.params.cookBookId;
-    // let cookBookAddRequest = {
-    //   groupId: groupId,
-    //   name: name,
-    //   description: cookBookDescription
-    // };
-    // CookbookController.cookbookAdd(cookBookAddRequest)
-    //   .then(response => this.handleCookBookAddServerSuccessResponse(response))
-    //   .catch(error => this.handleCookBookAddServerError(error));
   }
 
   handleRecipeAddServerError(error) {
     console.log(error);
-    //   if (
-    //     error != null &&
-    //     error.response != null &&
-    //     error.response.status != null
-    //   ) {
-    //     let statusCode = error.response.status;
-    //     this.setState({ userLoggedIn: false });
-    //     if (statusCode === 400) {
-    //       let responseBody =
-    //         typeof error.response.data === "string"
-    //           ? [error.response.data]
-    //           : error.response.data; //should be array of strings
-    //       this.setState({ errorText: responseBody });
-    //     } else if (statusCode === 403) {
-    //       //user already logged in somehow
-    //       this.props.history.push("/");
-    //     } else {
-    //       this.setState({
-    //         errorText:
-    //           "We are experiencing technical difficulties. Please try again, or contact support if this persists."
-    //       });
-    //     }
-    //   }
   }
 
   handleRecipeAddServerSuccessResponse(response) {
@@ -170,6 +131,15 @@ class CreateRecipePage extends React.Component {
     console.log(response);
 
     this.setState({ createdRecipe: true });
+
+    this.props.history.push(
+      "/" +
+        this.props.match.params.cookBookId +
+        "/" +
+        this.props.match.params.groupId +
+        "/" +
+        response.data.id
+    );
   }
 
   render() {

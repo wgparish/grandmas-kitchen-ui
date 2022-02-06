@@ -134,6 +134,12 @@ class RecipePage extends React.Component {
                                 Serves: {this.state.recipeInfo.serves}
                               </ListItem>
                               <ListItem>
+                                Prep Time: {this.state.recipeInfo.prepTime}
+                              </ListItem>
+                              <ListItem>
+                                Cook Time: {this.state.recipeInfo.cookTime}
+                              </ListItem>
+                              <ListItem>
                                 Total Time: {this.state.recipeInfo.totalTime}
                               </ListItem>
                             </List>
@@ -207,14 +213,16 @@ class RecipePage extends React.Component {
                           </div>
                           <div>
                             {this.state.isLoaded &&
-                              this.state.recipeInfo.stepList?.map(step => {
-                                return (
-                                  <div>
-                                    <h3>{step.title}</h3>
-                                    <p>{step.description}</p>
-                                  </div>
-                                );
-                              })}
+                              this.state.recipeInfo.stepList?.map(
+                                (step, index) => {
+                                  return (
+                                    <div>
+                                      <h3>Step {index+1}</h3>
+                                      <p>{step.title}</p>
+                                    </div>
+                                  );
+                                }
+                              )}
                           </div>
                         </CardBody>
                       </Card>
