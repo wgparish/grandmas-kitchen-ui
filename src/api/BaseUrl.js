@@ -21,6 +21,6 @@
  *     > once that image id is obtained, then the image can be downloaded from the general images endpoint using the image id as a parameter
  */
 
-const apiBaseURL = "http://api.grandmaskitchen.app:8443/";
+const apiBaseURL = "https://api.grandmaskitchen.app:8443/";
 
 export default apiBaseURL;
