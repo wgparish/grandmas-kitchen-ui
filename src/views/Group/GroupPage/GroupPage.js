@@ -44,6 +44,9 @@ class GroupPage extends React.Component {
   loadGroupList() {
     GroupController.groupPublicList() //TODO: Show both public & non public
       .then(response => {
+        console.log("Group List: ");
+        console.log("===========================");
+        console.log(response);
         this.setState({
           groupList: response.data,
           isLoaded: true

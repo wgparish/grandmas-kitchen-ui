@@ -62,6 +62,8 @@ class CreateGroupPage extends React.Component {
       description: groupDescription,
       public: true //All groups are public for now TODO: Change Back!!
     };
+    console.log("Create Group");
+    console.log(groupAddRequest);
     GroupController.groupAdd(groupAddRequest)
       .then(response => this.handleGroupAddServerSuccessResponse(response))
       .catch(error => this.handleGroupAddServerError(error));
@@ -134,7 +136,6 @@ class CreateGroupPage extends React.Component {
                       <form
                         className={classes.form}
                         onSubmit={e => {
-                          e.preventDefault();
                           this.createGroup();
                         }}
                       >
