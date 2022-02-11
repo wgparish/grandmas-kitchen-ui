@@ -14,49 +14,48 @@ import StaticImageCarousel from "../../../components/ImageCarousel/StaticImageCa
 import aboutUsStyle from "../../../assets/jss/material-kit-pro-react/views/aboutUsStyle";
 import Description from "./Sections/Description";
 
-
 class AboutPage extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            imageIds: null,
-            pageContent: ""
-        }
-    }
+    this.state = {
+      imageIds: null,
+      pageContent: ""
+    };
+  }
 
-    componentDidMount() {
-        window.scrollTo(0, 0);
-        document.body.scrollTop = 0;
-    }
+  componentDidMount() {
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
+  }
 
-    render() {
-        const {classes, ...rest} = this.props;
-        return (
-            <div>
-                <Header
-                    color="white"
-                    brand="Grandma's Kitchen"
-                    links={<HeaderLinks dropdownHoverColor="info"/>}
-                    fixed
-                    {...rest}
-                />
-                <Parallax filter="dark">
-                    <div>
-                        <StaticImageCarousel/>
-                    </div>
-                </Parallax>
-                <div className={classNames(classes.main, classes.mainRaised)}>
-                    <div className={classes.contactContent}>
-                        <div className={classes.container}>
-                            <Description/>
-                        </div>
-                    </div>
-                </div>
-                <PageFooter/>
+  render() {
+    const { classes, ...rest } = this.props;
+    return (
+      <div>
+        <Header
+          color="white"
+          brand="Grandma's Kitchen"
+          links={<HeaderLinks dropdownHoverColor="info" />}
+          fixed
+          {...rest}
+        />
+        <Parallax filter="dark">
+          <div>
+            <StaticImageCarousel />
+          </div>
+        </Parallax>
+        <div className={classNames(classes.main, classes.mainRaised)}>
+          <div className={classes.contactContent}>
+            <div className={classes.container}>
+              <Description />
             </div>
-        );
-    }
+          </div>
+        </div>
+        <PageFooter />
+      </div>
+    );
+  }
 }
 
 export default withStyles(aboutUsStyle)(AboutPage);
